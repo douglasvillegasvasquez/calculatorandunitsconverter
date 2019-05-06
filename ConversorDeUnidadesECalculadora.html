@@ -1,0 +1,2946 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Calculadora e Conversor de Unidade</title>
+    <!--autor: Douglas Villegas Vasquez
+    inicio de trabalho 25/04/2019
+    Termino de trabalho 02/05/2019 -->
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    
+  
+    <link href='css/style.css' type="text/css" rel="stylesheet" />
+  <style>
+   /* Escondendo a caixinha de marcação e o div alvo. */
+   #bloco3, #toggle{ 
+      display: none
+    }
+    
+    /* Texto exibido quando o checkbox não estiver marcado. */
+    #toggle + label::before {
+      content: url('images/CALCULADORAOFF.jpg')
+    }
+    
+    /* Texto exibido quando o checkbox estiver marcado. */
+    #toggle:checked + label:before {
+      content: url('images/CALCULADORAON.jpg')
+    }
+    
+    /* Exibe o elemento de ID 'bandeiras' quando o checkbox estiver marcado. */
+    #toggle:checked ~ #bloco3 {
+      display: block;
+      
+    
+    }
+    
+    
+
+  </style>
+</head>
+<body>
+   
+    
+  <!--  <div id='bandeiras'>
+      <img src='http://i.stack.imgur.com/SAGPC.png' alt='Klingons'>
+    </div>-->
+    
+<div id="bloco4" class="container-fluid" >
+<!--style="padding-left:132px"-->
+    <input type='checkbox' id='toggle' class="justify-content-end" value="Calculadora Status" >
+    <label for='toggle' style="padding-left:6px"></label>   
+
+<div id="bloco3" class="container-fluid">
+ <!--Calculadora-->
+
+<div id="calculadora">    
+        
+<form name="calculator">
+                    <table>
+                       <tr>
+                       
+                          <th colspan="4">  <input type="text" name="display" id="display" disable> </th>
+                       </tr>
+                      
+                       <tr>
+                        <td colspan="2"><label type="button"  id="button2" for='toggle' style="text-align: center;padding-top:15px;">OFF</label></td>
+                          <td><input type="button" id="button" id="clear" name="clear" value="CE" onclick="calculator.display.value = ''"></td>
+                            <td><input type="button"  id="buttonoperation" class="operator" name="plus" value="+" onclick="calculator.display.value += '+'"></td>
+                             
+                        </tr>
+                       <tr>
+                            <td><input type="button" id="button" name="seven" value="7" onclick="calculator.display.value += '7'"></td>
+                            <td><input type="button" id="button" name="eight" value="8" onclick="calculator.display.value += '8'"></td>
+                            <td><input type="button" id="button" name="nine" value="9" onclick="calculator.display.value += '9'"></td>
+                            <td><input type="button" id="buttonoperation" class="operator" name="minus" value="-" onclick="calculator.display.value += '-'"></td>
+                            
+                         </tr>
+                       <tr>
+                            <td><input type="button" id="button" name="four" value="4" onclick="calculator.display.value += '4'"></td>
+                            <td><input type="button" id="button" name="five" value="5" onclick="calculator.display.value += '5'"></td>
+                            <td><input type="button" id="button" name="six" value="6" onclick="calculator.display.value += '6'"></td>
+                            <td><input type="button" id="buttonoperation" class="operator" name="times" value="x" onclick="calculator.display.value += '*'"></td>
+                            
+                         </tr>
+                         <tr>
+                       
+                          <td><input type="button" id="button" name="one" value="1" onclick="calculator.display.value += '1'"></td>
+                          <td><input type="button" id="button"name="two" value="2" onclick="calculator.display.value += '2'"></td>
+                          <td><input type="button"  id="button"name="three" value="3" onclick="calculator.display.value += '3'"></td>
+                          <td><input type="button" id="buttonoperation" class="operator" name="div" value="/" onclick="calculator.display.value += '/'"></td>
+                            
+                         
+                          
+                       </tr>
+                       
+                       <tr>
+                    
+                        <td><input type="button" id="button" name="mod" value="%" onclick="calculator.display.value += '%' "></td>  
+                        <td><input type="button" id="button" name="zero" value="0" onclick="calculator.display.value += '0'"></td>
+                        <td><input type="button" id="button" name="point" value="." onclick="calculator.display.value += '.'"></td>
+                        <td rowspan="2"><input type="button" id="buttonoperation1" name="doit" value="=" onclick="calculator.display.value = eval(calculator.display.value)"></td>
+                           
+                        </tr>
+                      
+                      <tr>
+                      
+                      
+                      <td><input type="button" id="buttonoperation" name="math.sqrt" value="&#178;&#8730;" onclick="calculator.display.value = Math.sqrt(calculator.display.value)"></td>
+                      <td><input type="button" id="buttonoperation" name="doit" value="x&#178;" onclick="calculator.display.value = Math.pow(calculator.display.value,2)"></td>
+                      <td><label type="button"  id="button13" for='toggle'style="text-align: center;"><img src="images/CO.PNG"></label></td>
+                      
+                      </tr>
+                      
+                    </table>
+                   
+                 </form>  
+</div>
+</div>
+<div id="bloco5" class="container-fluid">         
+<div id="conversor">
+<h3>Conversor de Unidades</h3>
+<select class="seleccion" id="converterUnidade">
+  
+  <option value="0">SELECIONE
+  <option value="1">Distância
+  <option value="2">Peso
+  <option value="3">Tempo
+  <option value="4">Temperatura
+  <option value="5">Memória digital
+  <option value="6">Moedas
+</select>
+
+<!--Distancia-->
+<div id="1" class="group">     
+<div id="myId" >
+<label>Digite o valor</label>
+        <input id="inputDistancia" onchange="calculateKmetro(); calculateHectometro(); calculateDecametro(); calculateMetro(); calculateDecimetro(); calculateCentimetro();calculateMilimetro();" type="number" value="1" />
+<!--aqui sera bem dahora kk-->
+<select class="seleccion1" id="converterDistancia">
+        <option value="optionD1">-</option>
+        <option value="optionD2">km</option>
+        <option value="optionD3">hm</option>
+        <option value="optionD4">dam</option>
+        <option value="optionD5" >m</option>
+        <option value="optionD6">dm</option>
+        <option value="optionD7">cm</option>
+        <option value="optionD8">mm</option>
+      
+      </select>
+      <div id="optionD1" class="groupD"></div>
+      <!--null-->
+      <div id="optionD2" class="groupD">
+<!--quilometro-->     
+        <label>Resultado =</label>
+        <span class="tipe1" id="conversionKmetro"></span>
+        <select class="seleccion1"  id="unitsKmetro" onchange="calculateKmetro()">
+          <option value="km" selected>km</option>
+          <option value="hm">hm</option>
+          <option value="dam">dam</option>
+          <option value="m">m</option>
+          <option value="dm">dm</option>
+          <option value="cm">cm</option>
+          <option value="mm">mm</option>
+          
+        </select>
+      </div>
+      <div id="optionD3" class="groupD">
+<!--hectometro-->      
+         <label>Resultado =</label>
+        <span class="tipe1" id="conversionHectometro"></span>
+        <select class="seleccion1"  id="unitsHectometro" onchange="calculateHectometro()">
+          <option value="km" selected>km</option>
+          <option value="hm">hm</option>
+          <option value="dam">dam</option>
+          <option value="m">m</option>
+          <option value="dm">dm</option>
+          <option value="cm">cm</option>
+          <option value="mm">mm</option>
+          
+        </select>
+      </div>
+      <div id="optionD4" class="groupD">
+<!--decametro-->
+        <label>Resultado =</label>
+        <span class="tipe1" id="conversionDecametro"></span>
+        <select class="seleccion1"  id="unitsDecametro" onchange="calculateDecametro()">
+          <option value="km" selected>km</option>
+          <option value="hm">hm</option>
+          <option value="dam">dam</option>
+          <option value="m">m</option>
+          <option value="dm">dm</option>
+          <option value="cm">cm</option>
+          <option value="mm">mm</option>
+          
+        </select>
+      </div>
+      <div id="optionD5" class="groupD">
+<!--metro-->          
+       <label>Resultado =</label>
+        <span class="tipe1" id="conversionMetro"></span>
+        <select class="seleccion1"  id="unitsMetro" onchange="calculateMetro()">
+          <option value="km" selected>km</option>
+          <option value="hm">hm</option>
+          <option value="dam">dam</option>
+          <option value="m">m</option>
+          <option value="dm">dm</option>
+          <option value="cm">cm</option>
+          <option value="mm">mm</option>
+          
+        </select>
+
+      </div>
+      <div id="optionD6" class="groupD">
+<!--decimetro-->    
+        <label>Resultado =</label>
+        <span class="tipe1" id="conversionDecimetro"></span>
+        <select class="seleccion1"  id="unitsDecimetro" onchange="calculateDecimetro()">
+          <option value="km" selected>km</option>
+          <option value="hm">hm</option>
+          <option value="dam">dam</option>
+          <option value="m">m</option>
+          <option value="dm">dm</option>
+          <option value="cm">cm</option>
+          <option value="mm">mm</option>
+          
+        </select>
+      </div>
+      <div id="optionD7" class="groupD">
+<!--centimetro-->      
+         <label>Resultado =</label>
+        <span class="tipe1" id="conversionCentimetro"></span>
+        <select class="seleccion1"  id="unitsCentimetro" onchange="calculateCentimetro()">
+          <option value="km" selected>km</option>
+          <option value="hm">hm</option>
+          <option value="dam">dam</option>
+          <option value="m">m</option>
+          <option value="dm">dm</option>
+          <option value="cm">cm</option>
+          <option value="mm">mm</option>
+          
+        </select>
+      </div>
+      <div id="optionD8" class="groupD">
+<!--milimetro-->  
+        <label>Resultado =</label>
+        <span class="tipe1" id="conversionMilimetro"></span>
+        <select class="seleccion1"  id="unitsMilimetro" onchange="calculateMilimetro()">
+          <option value="km" selected>km</option>
+          <option value="hm">hm</option>
+          <option value="dam">dam</option>
+          <option value="m">m</option>
+          <option value="dm">dm</option>
+          <option value="cm">cm</option>
+          <option value="mm">mm</option>
+          
+        </select>        
+      </div>
+<!--fim-->
+       
+    </div></div>
+<!--Peso-->       
+<div id="2" class="group">
+        <div id="myId" >
+                <label>Digite o valor</label>
+                        <input id="inputPeso" onchange="calculateTon(); calculateKgrama(); calculateGrama(); calculateMiligrama(); calculateMicrograma();" type="number" value="1" />
+                <!--aqui sera bem dahora kk-->
+                <select class="seleccion1" id="converterPeso">
+                        <option value="P1">-</option>
+                        <option value="P2">ton</option>
+                        <option value="P3">kg</option>
+                        <option value="P4">g</option>
+                        <option value="P5" >mg</option>
+                        <option value="P6">μg</option>
+                        
+                              
+                      </select>
+                      <div id="P1" class="groupP"></div>
+                      <div id="P2" class="groupP">
+        <!--Tonelada-->                  
+                         <label>Resultado =</label>
+                            <span class="tipe1" id="conversionTon"></span>
+                            <select class="seleccion1"  id="unitsTon" onchange="calculateTon()">
+                              <option value="ton" selected>ton</option>
+                              <option value="kg">kg</option>
+                              <option value="g">g</option>
+                              <option value="mg">mg</option>
+                              <option value="μg">μg</option>
+                              
+                              
+                            </select> 
+                      </div>
+                      <div id="P3" class="groupP">
+        <!--Quilograma-->     
+                        <label>Resultado =</label>
+                            <span class="tipe1" id="conversionKgrama"></span>
+                            <select class="seleccion1"  id="unitsKgrama" onchange="calculateKgrama()">
+                              <option value="ton" selected>ton</option>
+                              <option value="kg">kg</option>
+                              <option value="g">g</option>
+                              <option value="mg">mg</option>
+                              <option value="μg">μg</option>
+                              
+                              
+                            </select> 
+                      </div>
+                      <div id="P4" class="groupP">
+        <!--Grama-->                  
+                            <label>Resultado =</label>
+                            <span class="tipe1" id="conversionGrama"></span>
+                            <select class="seleccion1"  id="unitsGrama" onchange="calculateGrama()">
+                              <option value="ton" selected>ton</option>
+                              <option value="kg">kg</option>
+                              <option value="g">g</option>
+                              <option value="mg">mg</option>
+                              <option value="μg">μg</option>
+                              
+                              
+                            </select>    
+                      </div>
+                      <div id="P5" class="groupP">
+        <!--Miligrama-->         
+                        <label>Resultado =</label>
+                            <span class="tipe1" id="conversionMiligrama"></span>
+                            <select class="seleccion1"  id="unitsMiligrama" onchange="calculateMiligrama()">
+                              <option value="ton" selected>ton</option>
+                              <option value="kg">kg</option>
+                              <option value="g">g</option>
+                              <option value="mg">mg</option>
+                              <option value="μg">μg</option>
+                              
+                              
+                            </select>
+                      </div>
+                      <div id="P6" class="groupP">
+        <!--Micrograma-->      
+                        <label>Resultado =</label>
+                            <span class="tipe1" id="conversionMicrograma"></span>
+                            <select class="seleccion1"  id="unitsMicrograma" onchange="calculateMicrograma()">
+                              <option value="ton" selected>ton</option>
+                              <option value="kg">kg</option>
+                              <option value="g">g</option>
+                              <option value="mg">mg</option>
+                              <option value="μg">μg</option>
+                              
+                              
+                            </select>
+                      </div>
+                           
+
+	</div></div>
+<!--Tempo-->
+<div id="3" class="group">
+<div id="myId" >
+                <label>Digite o valor</label>
+                        <input id="inputTempo" onchange="calculateDia(); calculateHora(); calculateTempo(); calculateMSeg(); " type="number" value="1" />
+                <!--aqui sera bem dahora kk-->
+                <select class="seleccion1" id="converterTempo">
+                        <option value="T1">-</option>
+                        <option value="T2">dia</option>
+                        <option value="T3">hora</option>
+                        <option value="T4">minutos</option>
+                        <option value="T5" >segundos</option>
+                        <option value="T6">milisegundos</option>
+                        
+                              
+                      </select>
+                      <div id="T1" class="groupT"></div>
+                      <div id="T2" class="groupT">
+        <!--dia-->       
+                        <label>Result=</label>
+                            <span class="tipe1" id="conversionDia"></span>
+                            <select class="seleccion1"  id="unitsDia" onchange="calculateDia()">
+                              <option value="dia">dia</option>
+                              <option value="hora" selected>hora</option>
+                              <option value="minutos">minutos</option>
+                              <option value="segundos">segundos</option>
+                              <option value="milissegundos">milissegundos</option>
+                              
+                              
+                            </select>
+                      </div>
+                      <div id="T3" class="groupT">
+        <!--hora-->    
+                        <label>Result=</label>
+                            <span class="tipe1" id="conversionHora"></span>
+                            <select class="seleccion1"  id="unitsHora" onchange="calculateHora()">
+                              <option value="dia">dia</option>
+                              <option value="hora" selected>hora</option>
+                              <option value="minutos">minutos</option>
+                              <option value="segundos">segundos</option>
+                              <option value="milissegundos">milissegundos</option>
+                              
+                              
+                            </select>   
+                      </div>
+                      <div id="T4" class="groupT">
+        <!--minutos-->                  
+                            <label>Result=</label>
+                            <span class="tipe1" id="conversionTempo"></span>
+                            <select class="seleccion1"  id="unitsTempo" onchange="calculateTempo()">
+                              <option value="dia">dia</option>
+                              <option value="hora" selected>hora</option>
+                              <option value="minutos">minutos</option>
+                              <option value="segundos">segundos</option>
+                              <option value="milissegundos">milissegundos</option>
+                              
+                              
+                            </select>    
+                      </div>
+                      <div id="T5" class="groupT">
+        <!--segundos-->         
+                        <label>Result=</label>
+                            <span class="tipe1" id="conversionSeg"></span>
+                            <select class="seleccion1"  id="unitsSeg" onchange="calculateSeg()">
+                              <option value="dia">dia</option>
+                              <option value="hora" selected>hora</option>
+                              <option value="minutos">minutos</option>
+                              <option value="segundos">segundos</option>
+                              <option value="milissegundos">milissegundos</option>
+                              
+                              
+                            </select> 
+                      </div>
+                      <div id="T6" class="groupT">
+        <!--milisegundos-->   
+                        <label>Result=</label>
+                            <span class="tipe1" id="conversionMSeg"></span>
+                            <select class="seleccion1"  id="unitsMSeg" onchange="calculateMSeg()">
+                              <option value="dia">dia</option>
+                              <option value="hora" selected>hora</option>
+                              <option value="minutos">minutos</option>
+                              <option value="segundos">segundos</option>
+                              <option value="milissegundos">milissegundos</option>
+                              
+                              
+                            </select> 
+                      </div>
+                           
+
+	</div></div>
+<!--Temperatura-->
+<div id="4" class="group">
+<div id="myId" >
+                <label>Digite o valor</label>
+                        <input id="inputTemperatura" onchange="calculateTemperatura(); calculateFahrenheit(); calculateKelvin(); " type="number" value="1" />
+                <!--aqui sera bem dahora kk-->
+                <select class="seleccion1" id="converterTemperatura">
+                        <option value="Te1">-</option>
+                        <option value="Te2">Celsius</option>
+                        <option value="Te3">Fahrenheit</option>
+                        <option value="Te4">Kelvin</option>
+                        
+                        
+                              
+                      </select>
+                      <div id="Te1" class="groupTe"></div>
+                      <div id="Te2" class="groupTe">
+        <!--celsius-->                  
+                          <label>Result=</label>
+                        <span class="tipe1" id="conversionTemperatura"></span>
+                        <select class="seleccion1"  id="unitsTemperatura" onchange="calculateTemperatura()">
+                          <option value="celsius" selected>Celsius</option>
+                          <option value="fahrenheit" >Fahrenheit</option>
+                          <option value="kelvin">Kelvin</option> 
+                          
+                        </select>     
+                        </div>
+                        <div id="Te3" class="groupTe">
+        <!--fahrenheit-->  
+                            <label>Result=</label>
+                        <span class="tipe1" id="conversionFahrenheit"></span>
+                        <select class="seleccion1"  id="unitsFahrenheit" onchange="calculateFahrenheit()">
+                          <option value="celsius" selected>Celsius</option>
+                          <option value="fahrenheit" >Fahrenheit</option>
+                          <option value="kelvin">Kelvin</option> 
+                          
+                        </select>
+                        </div>
+                        <div id="Te4" class="groupTe">
+        <!--kelvin-->            
+                            <label>Result=</label>
+                        <span class="tipe1" id="conversionKelvin"></span>
+                        <select class="seleccion1"  id="unitsKelvin" onchange="calculateKelvin()">
+                          <option value="celsius" selected>Celsius</option>
+                          <option value="fahrenheit" >Fahrenheit</option>
+                          <option value="kelvin">Kelvin</option> 
+                          
+                        </select>
+                        </div>
+                           
+	</div></div>
+
+<!--Memoria Digital-->
+<div id="5" class="group">
+    <div id="myId" >
+                    <label>Digite o valor</label>
+                            <input id="inputMDigital" onchange="calculateMDigital(); calculateKB(); calculateGB(); calculateTB(); calculatePB(); calculateBit(); calculateKBit(); calculateMBit(); calculateGBit(); calculateTBit(); calculatePBit();" type="number" value="1" />
+                    <!--aqui sera bem dahora kk-->
+                    <select class="seleccion1" id="converterMDigital">
+                            <option value="MD1">-</option>
+                            <option value="MD2">Byte</option>
+                            <option value="MD3">Kilobyte</option>
+                            <option value="MD4">Megabyte</option>
+                            <option value="MD5">Gigabyte</option>
+                            <option value="MD6">Terabyte</option>
+                            <option value="MD7">Petabyte</option>
+                            <option value="MD8">Bit</option>
+                            <option value="MD9">Kilobit</option>
+                            <option value="MD10">Megabit</option>
+                            <option value="MD11">Gigabit</option>
+                            <option value="MD12">Terabit</option>
+                            <option value="MD13">Petabit</option>
+    
+                          </select>
+                            <div id="MD1" class="groupMD"></div>
+                            <div id="MD2" class="groupMD">
+            <!--byte-->
+                              <label>Result=</label>
+                            <span class="tipe1" id="conversionMDigital"></span>
+                            <select class="seleccion1"  id="unitsMDigital" onchange="calculateMDigital()">
+                              <option value="byte" selected>byte</option>
+                              <option value="kilobyte">kilobyte</option>
+                              <option value="megabyte">megabyte</option>
+                              <option value="gigabyte">gigabyte</option>
+                              <option value="terabyte">terabyte</option>
+                              <option value="petabyte">petabyte</option>
+                              <option value="bit">bit</option>
+                              <option value="kilobit">kilobit</option>
+                              <option value="megabit">megabit</option>
+                              <option value="gigabit">gigabit</option>
+                              <option value="terabit">terabit</option>
+                              <option value="petabit">petabit</option> 
+                              
+                            </select>     
+                            </div>
+                            <div id="MD3" class="groupMD">
+            <!--kilobyte-->             
+                                <label>Result=</label>
+                            <span class="tipe1" id="conversionKB"></span>
+                            <select class="seleccion1"  id="unitsKB" onchange="calculateKB()">
+                              <option value="byte" selected>byte</option>
+                              <option value="kilobyte">kilobyte</option>
+                              <option value="megabyte">megabyte</option>
+                              <option value="gigabyte">gigabyte</option>
+                              <option value="terabyte">terabyte</option>
+                              <option value="petabyte">petabyte</option>
+                              <option value="bit">bit</option>
+                              <option value="kilobit">kilobit</option>
+                              <option value="megabit">megabit</option>
+                              <option value="gigabit">gigabit</option>
+                              <option value="terabit">terabit</option>
+                              <option value="petabit">petabit</option> 
+                              
+                            </select>
+                            </div>
+                            <div id="MD4" class="groupMD">
+            <!--megabyte-->        
+                                <label>Result=</label>
+                            <span class="tipe1" id="conversionMB"></span>
+                            <select class="seleccion1"  id="unitsMB" onchange="calculateMB()">
+                              <option value="byte" selected>byte</option>
+                              <option value="kilobyte">kilobyte</option>
+                              <option value="megabyte">megabyte</option>
+                              <option value="gigabyte">gigabyte</option>
+                              <option value="terabyte">terabyte</option>
+                              <option value="petabyte">petabyte</option>
+                              <option value="bit">bit</option>
+                              <option value="kilobit">kilobit</option>
+                              <option value="megabit">megabit</option>
+                              <option value="gigabit">gigabit</option>
+                              <option value="terabit">terabit</option>
+                              <option value="petabit">petabit</option> 
+                              
+                            </select>
+                            </div>
+                            <div id="MD5" class="groupMD">
+            <!--gigabyte-->         
+                                <label>Result=</label>
+                            <span class="tipe1" id="conversionGB"></span>
+                            <select class="seleccion1"  id="unitsGB" onchange="calculateGB()">
+                              <option value="byte" selected>byte</option>
+                              <option value="kilobyte">kilobyte</option>
+                              <option value="megabyte">megabyte</option>
+                              <option value="gigabyte">gigabyte</option>
+                              <option value="terabyte">terabyte</option>
+                              <option value="petabyte">petabyte</option>
+                              <option value="bit">bit</option>
+                              <option value="kilobit">kilobit</option>
+                              <option value="megabit">megabit</option>
+                              <option value="gigabit">gigabit</option>
+                              <option value="terabit">terabit</option>
+                              <option value="petabit">petabit</option> 
+                              
+                            </select>
+                            </div>
+                            <div id="MD6" class="groupMD">
+            <!--terabyte-->      
+                                <label>Result=</label>
+                            <span class="tipe1" id="conversionTB"></span>
+                            <select class="seleccion1"  id="unitsTB" onchange="calculateTB()">
+                              <option value="byte" selected>byte</option>
+                              <option value="kilobyte">kilobyte</option>
+                              <option value="megabyte">megabyte</option>
+                              <option value="gigabyte">gigabyte</option>
+                              <option value="terabyte">terabyte</option>
+                              <option value="petabyte">petabyte</option>
+                              <option value="bit">bit</option>
+                              <option value="kilobit">kilobit</option>
+                              <option value="megabit">megabit</option>
+                              <option value="gigabit">gigabit</option>
+                              <option value="terabit">terabit</option>
+                              <option value="petabit">petabit</option> 
+                              
+                            </select>
+                            </div>
+                            <div id="MD7" class="groupMD">
+            <!--petabyte-->      
+                                <label>Result=</label>
+                            <span class="tipe1" id="conversionPB"></span>
+                            <select class="seleccion1"  id="unitsPB" onchange="calculatePB()">
+                              <option value="byte" selected>byte</option>
+                              <option value="kilobyte">kilobyte</option>
+                              <option value="megabyte">megabyte</option>
+                              <option value="gigabyte">gigabyte</option>
+                              <option value="terabyte">terabyte</option>
+                              <option value="petabyte">petabyte</option>
+                              <option value="bit">bit</option>
+                              <option value="kilobit">kilobit</option>
+                              <option value="megabit">megabit</option>
+                              <option value="gigabit">gigabit</option>
+                              <option value="terabit">terabit</option>
+                              <option value="petabit">petabit</option> 
+                              
+                            </select>
+                            </div>
+                            <div id="MD8" class="groupMD">
+            <!--bit-->               
+                                 <label>Result=</label>
+                            <span class="tipe1" id="conversionBit"></span>
+                            <select class="seleccion1"  id="unitsBit" onchange="calculateBit()">
+                              <option value="byte" selected>byte</option>
+                              <option value="kilobyte">kilobyte</option>
+                              <option value="megabyte">megabyte</option>
+                              <option value="gigabyte">gigabyte</option>
+                              <option value="terabyte">terabyte</option>
+                              <option value="petabyte">petabyte</option>
+                              <option value="bit">bit</option>
+                              <option value="kilobit">kilobit</option>
+                              <option value="megabit">megabit</option>
+                              <option value="gigabit">gigabit</option>
+                              <option value="terabit">terabit</option>
+                              <option value="petabit">petabit</option> 
+                              
+                            </select>
+                            </div>
+                            <div id="MD9" class="groupMD">
+            <!--kilobit-->           
+                                <label>Result=</label>
+                            <span class="tipe1" id="conversionKBit"></span>
+                            <select class="seleccion1"  id="unitsKBit" onchange="calculateKBit()">
+                              <option value="byte" selected>byte</option>
+                              <option value="kilobyte">kilobyte</option>
+                              <option value="megabyte">megabyte</option>
+                              <option value="gigabyte">gigabyte</option>
+                              <option value="terabyte">terabyte</option>
+                              <option value="petabyte">petabyte</option>
+                              <option value="bit">bit</option>
+                              <option value="kilobit">kilobit</option>
+                              <option value="megabit">megabit</option>
+                              <option value="gigabit">gigabit</option>
+                              <option value="terabit">terabit</option>
+                              <option value="petabit">petabit</option> 
+                              
+                            </select>
+                            </div>
+                            <div id="MD10" class="groupMD">
+            <!--megabit-->    
+                                <label>Result=</label>
+                            <span class="tipe1" id="conversionMBit"></span>
+                            <select class="seleccion1"  id="unitsMBit" onchange="calculateMBit()">
+                              <option value="byte" selected>byte</option>
+                              <option value="kilobyte">kilobyte</option>
+                              <option value="megabyte">megabyte</option>
+                              <option value="gigabyte">gigabyte</option>
+                              <option value="terabyte">terabyte</option>
+                              <option value="petabyte">petabyte</option>
+                              <option value="bit">bit</option>
+                              <option value="kilobit">kilobit</option>
+                              <option value="megabit">megabit</option>
+                              <option value="gigabit">gigabit</option>
+                              <option value="terabit">terabit</option>
+                              <option value="petabit">petabit</option> 
+                              
+                            </select>
+                            </div>
+                            <div id="MD11" class="groupMD">
+            <!--gigabit-->         
+                                <label>Result=</label>
+                            <span class="tipe1" id="conversionGBit"></span>
+                            <select class="seleccion1"  id="unitsGBit" onchange="calculateGBit()">
+                              <option value="byte" selected>byte</option>
+                              <option value="kilobyte">kilobyte</option>
+                              <option value="megabyte">megabyte</option>
+                              <option value="gigabyte">gigabyte</option>
+                              <option value="terabyte">terabyte</option>
+                              <option value="petabyte">petabyte</option>
+                              <option value="bit">bit</option>
+                              <option value="kilobit">kilobit</option>
+                              <option value="megabit">megabit</option>
+                              <option value="gigabit">gigabit</option>
+                              <option value="terabit">terabit</option>
+                              <option value="petabit">petabit</option> 
+                              
+                            </select>
+                            </div>
+                            <div id="MD12" class="groupMD">
+            <!--terabit-->    
+                                <label>Result=</label>
+                            <span class="tipe1" id="conversionTBit"></span>
+                            <select class="seleccion1"  id="unitsTBit" onchange="calculateTBit()">
+                              <option value="byte" selected>byte</option>
+                              <option value="kilobyte">kilobyte</option>
+                              <option value="megabyte">megabyte</option>
+                              <option value="gigabyte">gigabyte</option>
+                              <option value="terabyte">terabyte</option>
+                              <option value="petabyte">petabyte</option>
+                              <option value="bit">bit</option>
+                              <option value="kilobit">kilobit</option>
+                              <option value="megabit">megabit</option>
+                              <option value="gigabit">gigabit</option>
+                              <option value="terabit">terabit</option>
+                              <option value="petabit">petabit</option> 
+                              
+                            </select>
+                            </div>
+                            <div id="MD13" class="groupMD">
+            <!--petabit-->          
+                                <label>Result=</label>
+                            <span class="tipe1" id="conversionPBit"></span>
+                            <select class="seleccion1"  id="unitsPBit" onchange="calculatePBit()">
+                              <option value="byte" selected>byte</option>
+                              <option value="kilobyte">kilobyte</option>
+                              <option value="megabyte">megabyte</option>
+                              <option value="gigabyte">gigabyte</option>
+                              <option value="terabyte">terabyte</option>
+                              <option value="petabyte">petabyte</option>
+                              <option value="bit">bit</option>
+                              <option value="kilobit">kilobit</option>
+                              <option value="megabit">megabit</option>
+                              <option value="gigabit">gigabit</option>
+                              <option value="terabit">terabit</option>
+                              <option value="petabit">petabit</option> 
+                              
+                            </select>
+                            </div>
+                                                   
+        </div></div>
+<!--Moeda-->
+<div id="6" class="group">
+    <div id="myId" >
+                    <label>Digite o valor</label>
+                            <input id="inputMoeda" onchange="calculateMoeda(); calculateMoedaEuro(); calculateMoedaReal(); calculateMoedaIene(); calculateMoedaBol(); calculateMoedaBTC(); calculateMoedaBCH(); calculateMoedaSoles(); calculateMoedapesoC()" type="number" value="1" />
+                    <!--aqui sera bem dahora kk-->
+                    <select class="seleccion2" id="converterMoeda">
+                            <option value="M1">-</option>
+                            <option value="M2">dollar</option>
+                            <option value="M3">euro</option>
+                            <option value="M4">real</option>
+                            <option value="M5">iene</option>
+                            <option value="M6">boliviano</option>
+                            <option value="M7">bitcoin</option>
+                            <option value="M8">bitcoincash</option>
+                            <option value="M9">soles peru</option>
+                            <option value="M10">peso colombia</option>
+                            <option value="M11">peso argentina</option>
+                                  
+                          </select>
+                          <div id="M1" class="groupMoeda"></div>
+             
+                             <div id="M2" class="groupMoeda">
+    <!--dollar-->                             
+                              <label>Result=</label>
+                            <span class="tipe1" id="conversionMoeda"></span>
+                            <select class="seleccion2"  id="unitsMoeda" onchange="calculateMoeda()">
+                              <option value="dollar" selected>dollares</option>
+                              <option value="euro" >euros</option>
+                              <option value="real">reais</option> 
+                              <option value="iene">ienes Japão</option>
+                              <option value="boliviano">boliviano</option>
+                              <option value="bitcoin">bitcoin</option>
+                              <option value="bitcoincash">bitcoin cash</option>
+                              <option value="solesPeru">soles Peru</option> 
+                              <option value="pesoColombia">Peso Colombia</option> 
+                              <option value="pesoArgentina">Peso Argentina</option> 
+                              
+                            </select>     
+                            </div>
+                            <div id="M3" class="groupMoeda">
+    <!--euro-->
+                                <label>Result=</label>
+                            <span class="tipe1" id="conversionMoedaEuro"></span>
+                            <select class="seleccion2"  id="unitsMoedaEuro" onchange="calculateMoedaEuro()">
+                              <option value="dollar" selected>dollares</option>
+                              <option value="euro" >euros</option>
+                              <option value="real">reais</option> 
+                              <option value="iene">ienes Japão</option>
+                              <option value="boliviano">boliviano</option>
+                              <option value="bitcoin">bitcoin</option>
+                              <option value="bitcoincash">bitcoincash</option>
+                              <option value="solesPeru">soles Peru</option> 
+                              <option value="pesoColombia">Peso Colombia</option> 
+                              <option value="pesoArgentina">Peso Argentina</option>
+                            </select>  
+                            </div>
+                            <div id="M4" class="groupMoeda">
+    <!--real-->              
+                                <label>Result=</label>
+                            <span class="tipe1" id="conversionMoedaReal"></span>
+                            <select class="seleccion2"  id="unitsMoedaReal" onchange="calculateMoedaReal()">
+                              <option value="dollar" selected>dollares</option>
+                              <option value="euro" >euros</option>
+                              <option value="real">reais</option> 
+                              <option value="iene">ienes Japão</option>
+                              <option value="boliviano">boliviano</option>
+                              <option value="bitcoin">bitcoin</option>
+                              <option value="bitcoincash">bitcoincash</option>
+                              <option value="solesPeru">soles Peru</option> 
+                              <option value="pesoColombia">Peso Colombia</option> 
+                              <option value="pesoArgentina">Peso Argentina</option>
+                            </select>              
+                            </div>
+                            <div id="M5" class="groupMoeda">
+    <!--iene-->                  
+                                <label>Result=</label>
+                            <span class="tipe1" id="conversionMoedaIene"></span>
+                            <select class="seleccion2"  id="unitsMoedaIene" onchange="calculateMoedaIene()">
+                              <option value="dollar" selected>dollares</option>
+                              <option value="euro" >euros</option>
+                              <option value="real">reais</option> 
+                              <option value="iene">ienes Japão</option>
+                              <option value="boliviano">boliviano</option>
+                              <option value="bitcoin">bitcoin</option>
+                              <option value="bitcoincash">bitcoincash</option>
+                              <option value="solesPeru">soles Peru</option> 
+                              <option value="pesoColombia">Peso Colombia</option> 
+                              <option value="pesoArgentina">Peso Argentina</option>
+                            </select>              
+                            </div>
+                            </div>
+                            <div id="M6" class="groupMoeda">
+    <!--boliviano-->               
+    <label>Result=</label>
+    <span class="tipe1" id="conversionMoedaBol"></span>
+    <select class="seleccion2"  id="unitsMoedaBol" onchange="calculateMoedaBol()">
+      <option value="dollar" selected>dollares</option>
+      <option value="euro" >euros</option>
+      <option value="real">reais</option> 
+      <option value="iene">ienes Japão</option>
+      <option value="boliviano">boliviano</option>
+      <option value="bitcoin">bitcoin</option>
+      <option value="bitcoincash">bitcoincash</option>
+      <option value="solesPeru">soles Peru</option> 
+      <option value="pesoColombia">Peso Colombia</option> 
+      <option value="pesoArgentina">Peso Argentina</option>
+    </select>
+                            </div>
+                            <div id="M7" class="groupMoeda">
+    <!--bitcoin-->          
+                                <label>Result=</label>
+                            <span class="tipe1" id="conversionMoedaBTC"></span>
+                            <select class="seleccion2"  id="unitsMoedaBTC" onchange="calculateMoedaBTC()">
+                              <option value="dollar" selected>dollares</option>
+                              <option value="euro" >euros</option>
+                              <option value="real">reais</option> 
+                              <option value="iene">ienes Japão</option>
+                              <option value="boliviano">boliviano</option>
+                              <option value="bitcoin">bitcoin</option>
+                              <option value="bitcoincash">bitcoincash</option>
+                              <option value="solesPeru">soles Peru</option> 
+                              <option value="pesoColombia">Peso Colombia</option> 
+                              <option value="pesoArgentina">Peso Argentina</option>
+                            </select>
+                            </div>
+                            <div id="M8" class="groupMoeda">
+    <!--bitcoincash-->          
+    <label>Result=</label>
+    <span class="tipe1" id="conversionMoedaBCH"></span>
+    <select class="seleccion2"  id="unitsMoedaBCH" onchange="calculateMoedaBCH()">
+      <option value="dollar" selected>dollares</option>
+      <option value="euro" >euros</option>
+      <option value="real">reais</option> 
+      <option value="iene">ienes Japão</option>
+      <option value="boliviano">boliviano</option>
+      <option value="bitcoin">bitcoin</option>
+      <option value="bitcoincash">bitcoincash</option>
+      <option value="solesPeru">soles Peru</option> 
+      <option value="pesoColombia">Peso Colombia</option> 
+      <option value="pesoArgentina">Peso Argentina</option>
+    </select>
+                            </div>
+                            <div id="M9" class="groupMoeda">
+    <!--soles peru-->        
+                                <label>Result=</label>
+                            <span class="tipe1" id="conversionMoedaSoles"></span>
+                            <select class="seleccion2"  id="unitsMoedaSoles" onchange="calculateMoedaSoles()">
+                              <option value="dollar" selected>dollares</option>
+                              <option value="euro" >euros</option>
+                              <option value="real">reais</option> 
+                              <option value="iene">ienes Japão</option>
+                              <option value="boliviano">boliviano</option>
+                              <option value="bitcoin">bitcoin</option>
+                              <option value="bitcoincash">bitcoincash</option>
+                              <option value="solesPeru">soles Peru</option> 
+                              <option value="pesoColombia">Peso Colombia</option> 
+                              <option value="pesoArgentina">Peso Argentina</option>
+                            </select>
+                            </div>
+                            <div id="M10" class="groupMoeda">
+    <!--peso colombia-->            
+                                <label>Result=</label>
+                            <span class="tipe1" id="conversionMoedapesoC"></span>
+                            <select class="seleccion2"  id="unitsMoedapesoC" onchange="calculateMoedapesoC()">
+                              <option value="dollar" selected>dollares</option>
+                              <option value="euro" >euros</option>
+                              <option value="real">reais</option> 
+                              <option value="iene">ienes Japão</option>
+                              <option value="boliviano">boliviano</option>
+                              <option value="bitcoin">bitcoin</option>
+                              <option value="bitcoincash">bitcoincash</option>
+                              <option value="solesPeru">soles Peru</option> 
+                              <option value="pesoColombia">Peso Colombia</option> 
+                              <option value="pesoArgentina">Peso Argentina</option>
+                            </select>
+                            </div>
+                            <div id="M11" class="groupMoeda">
+    <!--peso argentino-->          
+                                <label>Result=</label>
+                            <span class="tipe1" id="conversionMoedapesoA"></span>
+                            <select class="seleccion2"  id="unitsMoedapesoA" onchange="calculateMoedapesoA()">
+                              <option value="dollar" selected>dollares</option>
+                              <option value="euro" >euros</option>
+                              <option value="real">reais</option> 
+                              <option value="iene">ienes Japão</option>
+                              <option value="boliviano">boliviano</option>
+                              <option value="bitcoin">bitcoin</option>
+                              <option value="bitcoincash">bitcoincash</option>
+                              <option value="solesPeru">soles Peru</option> 
+                              <option value="pesoColombia">Peso Colombia</option> 
+                              <option value="pesoArgentina">Peso Argentina</option>
+                            </select>
+                            </div>
+                               
+        </div>
+
+</div>
+   
+</div>
+</div>
+
+
+<script>
+function funcConverterUnidade() {
+   $(document).ready(function () {
+              $('.group').hide();
+              $('#0').show();
+              $('#converterUnidade').change(function () {
+                $('.group').hide();
+                $('#'+$(this).val()).show();
+              })
+            });
+}
+function funcConverterDistancia() {
+    $(document).ready(function () {
+                  $('.groupD').hide();
+                  $('#option01').show();
+                  $('#converterDistancia').change(function () {
+                    $('.groupD').hide();
+                    $('#'+$(this).val()).show();
+                  })
+                });
+}
+function funcConverterPeso() {
+    $(document).ready(function () {
+                  $('.groupP').hide();
+                  $('#P1').show();
+                  $('#converterPeso').change(function () {
+                    $('.groupP').hide();
+                    $('#'+$(this).val()).show();
+                  })
+                });
+}
+function funcConverterTempo() {
+    $(document).ready(function () {
+                  $('.groupT').hide();
+                  $('#T1').show();
+                  $('#converterTempo').change(function () {
+                    $('.groupT').hide();
+                    $('#'+$(this).val()).show();
+                  })
+                });
+}
+function funcConverterTemperatura() {
+    $(document).ready(function () {
+                  $('.groupTe').hide();
+                  $('#Te1').show();
+                  $('#converterTemperatura').change(function () {
+                    $('.groupTe').hide();
+                    $('#'+$(this).val()).show();
+                  })
+                });
+}
+function funcConverterMDigital() {
+    $(document).ready(function () {
+                  $('.groupMD').hide();
+                  $('#MD1').show();
+                  $('#converterMDigital').change(function () {
+                    $('.groupMD').hide();
+                    $('#'+$(this).val()).show();
+                  })
+                });
+}
+function funcConverterMoeda() {
+    $(document).ready(function () {
+                  $('.groupMoeda').hide();
+                  $('#M1').show();
+                  $('#converterMoeda').change(function () {
+                    $('.groupMoeda').hide();
+                    $('#'+$(this).val()).show();
+                  })
+                });
+}
+
+function addLoadEvent(func) {
+  var oldonload = window.onload;
+  if (typeof window.onload != 'function') {
+    window.onload = func;
+  } else {
+    window.onload = function() {
+      if (oldonload) {
+        oldonload();
+      }
+      func();
+    }
+  }
+}
+addLoadEvent(funcConverterUnidade);
+addLoadEvent(funcConverterDistancia);
+addLoadEvent(funcConverterPeso);
+addLoadEvent(funcConverterTempo);
+addLoadEvent(funcConverterTemperatura);
+addLoadEvent(funcConverterMDigital);
+addLoadEvent(funcConverterMoeda);
+addLoadEvent(function() {
+    document.body.style.width =338;
+})
+</script>
+<!--DISTANCIA-->
+<!--Quilometro-->
+<script type="text/javascript">
+    const calculateKmetro = () => {
+       const inputDistancia = document.getElementById("inputDistancia").value;
+       const unitsKmetro = document.getElementById("unitsKmetro").value;
+       const conversionKmetro = document.getElementById("conversionKmetro");
+       let calculatedKmetro;
+     
+       if (unitsKmetro === "km") {
+           calculatedKmetro = inputDistancia;
+       }
+       if (unitsKmetro === "mm") {
+           calculatedKmetro = inputDistancia * 1000000;
+           
+       }
+       if (unitsKmetro === "cm") {
+           calculatedKmetro = inputDistancia * 100000;
+           
+       }
+   
+       if (unitsKmetro === "dm") {
+           calculatedKmetro = inputDistancia * 10000;
+           
+       }
+     
+       if (unitsKmetro === "m") {
+           calculatedKmetro = inputDistancia * 1000;
+           
+       }
+     
+       if (unitsKmetro === "dam") {
+           calculatedKmetro = inputDistancia * 100;
+           
+       }
+       if (unitsKmetro === "hm") {
+           calculatedKmetro = inputDistancia * 10;
+           
+       }
+     
+       conversionKmetro.innerHTML = calculatedKmetro;
+     };
+   
+     calculateKmetro();
+    </script>
+<!--Hectometro-->
+<script type="text/javascript">
+    const calculateHectometro = () => {
+       const inputDistancia = document.getElementById("inputDistancia").value;
+       const unitsHectometro = document.getElementById("unitsHectometro").value;
+       const conversionHectometro = document.getElementById("conversionHectometro");
+       let calculatedHectometro;
+     
+       if (unitsHectometro === "hm") {
+           calculatedDecametro = inputDistancia;
+       }
+       if (unitsHectometro === "mm") {
+           calculatedHectometro = inputDistancia * 100000;
+           
+       }
+       if (unitsHectometro === "cm") {
+           calculatedHectometro = inputDistancia * 10000;
+           
+       }
+   
+       if (unitsHectometro === "dm") {
+           calculatedHectoametro = inputDistancia * 1000;
+           
+       }
+     
+       if (unitsHectometro === "m") {
+           calculatedHectometro = inputDistancia * 100;
+           
+       }
+     
+       if (unitsHectometro === "dam") {
+           calculatedHectometro = inputDistancia * 10;
+           
+       }
+       if (unitsHectometro === "km") {
+           calculatedHectometro = inputDistancia * 0.1;
+           
+       }
+     
+       conversionHectometro.innerHTML = calculatedHectometro;
+     };
+   
+     calculateHectometro();
+    </script>
+<!--Decametro-->
+<script type="text/javascript">
+    const calculateDecametro = () => {
+       const inputDistancia = document.getElementById("inputDistancia").value;
+       const unitsDecametro = document.getElementById("unitsDecametro").value;
+       const conversionDecametro = document.getElementById("conversionDecametro");
+       let calculatedDecametro;
+     
+       if (unitsDecametro === "dam") {
+           calculatedDecametro = inputDistancia;
+       }
+       if (unitsDecametro === "mm") {
+           calculatedDecametro = inputDistancia * 10000;
+           
+       }
+       if (unitsDecametro === "cm") {
+           calculatedDecametro = inputDistancia * 1000;
+           
+       }
+   
+       if (unitsDecametro === "dm") {
+           calculatedDecametro = inputDistancia * 100;
+           
+       }
+     
+       if (unitsDecametro === "m") {
+           calculatedDecametro = inputDistancia * 10;
+           
+       }
+     
+       if (unitsDecametro === "hm") {
+           calculatedDecametro = inputDistancia * 0.1;
+           
+       }
+       if (unitsDecametro === "km") {
+           calculatedDecametro = inputDistancia * 0.01;
+           
+       }
+     
+       conversionDecametro.innerHTML = calculatedDecametro;
+     };
+   
+     calculateDecametro();
+    </script>
+ <!--Metro-->
+<script type="text/javascript">
+ const calculateMetro = () => {
+    const inputDistancia = document.getElementById("inputDistancia").value;
+    const unitsMetro = document.getElementById("unitsMetro").value;
+    const conversionMetro = document.getElementById("conversionMetro");
+    let calculatedMetro;
+  
+    if (unitsMetro === "m") {
+        calculatedMetro = inputDistancia;
+    }
+    if (unitsMetro === "mm") {
+        calculatedMetro = inputDistancia * 1000;
+        
+    }
+    if (unitsMetro === "cm") {
+        calculatedMetro = inputDistancia * 100;
+        
+    }
+
+    if (unitsMetro === "dm") {
+        calculatedMetro = inputDistancia * 10;
+        
+    }
+  
+    if (unitsMetro === "dam") {
+        calculatedMetro = inputDistancia * 0.1;
+       
+    }
+  
+    if (unitsMetro === "hm") {
+        calculatedMetro = inputDistancia * 0.01;
+       
+    }
+    if (unitsMetro === "km") {
+        calculatedMetro = inputDistancia * 0.001;
+       
+    }
+  
+    conversionMetro.innerHTML = calculatedMetro;
+  };
+
+  calculateMetro();
+ </script>    
+<!--Decimetro-->
+<script type="text/javascript">
+    const calculateDecimetro = () => {
+       const inputDistancia = document.getElementById("inputDistancia").value;
+       const unitsDecimetro = document.getElementById("unitsDecimetro").value;
+       const conversionDecimetro = document.getElementById("conversionDecimetro");
+       let calculatedDecimetro;
+     
+       if (unitsDecimetro === "dm") {
+           calculatedDecimetro = inputDistancia;
+       }
+       if (unitsDecimetro === "mm") {
+           calculatedDecimetro = inputDistancia * 100;
+           
+       }
+       if (unitsDecimetro === "cm") {
+           calculatedDecimetro = inputDistancia * 10;
+           
+       }
+   
+       if (unitsDecimetro === "m") {
+           calculatedDecimetro = inputDistancia * 0.1;
+           
+       }
+     
+       if (unitsDecimetro === "dam") {
+           calculatedDecimetro = inputDistancia * 0.01;
+           
+       }
+     
+       if (unitsDecimetro === "hm") {
+           calculatedDecimetro = inputDistancia * 0.001;
+           
+       }
+       if (unitsDecimetro === "km") {
+           calculatedDecimetro = inputDistancia * 0.0001;
+           
+       }
+     
+       conversionDecimetro.innerHTML = calculatedDecimetro;
+     };
+   
+     calculateDecimetro();
+    </script>
+<!--Centimetro-->
+<script type="text/javascript">
+    const calculateCentimetro = () => {
+       const inputDistancia = document.getElementById("inputDistancia").value;
+       const unitsCentimetro = document.getElementById("unitsCentimetro").value;
+       const conversionCentimetro = document.getElementById("conversionCentimetro");
+       let calculatedCentimetro;
+     
+       if (unitsCentimetro === "cm") {
+           calculatedCentimetro = inputDistancia;
+       }
+       if (unitsCentimetro === "mm") {
+           calculatedCentimetro = inputDistancia * 10;
+           
+       }
+       if (unitsCentimetro === "dm") {
+           calculatedCentimetro = inputDistancia * 0.1;
+           
+       }
+   
+       if (unitsCentimetro === "m") {
+           calculatedCentimetro = inputDistancia * 0.01;
+           
+       }
+     
+       if (unitsCentimetro === "dam") {
+           calculatedCentimetro = inputDistancia * 0.001;
+           
+       }
+     
+       if (unitsCentimetro === "hm") {
+           calculatedCentimetro = inputDistancia * 0.0001;
+           
+       }
+       if (unitsCentimetro === "km") {
+           calculatedCentimetro = inputDistancia * 0.00001;
+           calculatedCentimetro = calculatedCentimetro.toFixed(5);
+       }
+     
+       conversionCentimetro.innerHTML = calculatedCentimetro;
+     };
+   
+     calculateCentimetro();
+    </script>
+<!--Milimetro-->
+<script type="text/javascript">
+    const calculateMilimetro = () => {
+       const inputDistancia = document.getElementById("inputDistancia").value;
+       const unitsMilimetro = document.getElementById("unitsMilimetro").value;
+       const conversionMilimetro = document.getElementById("conversionMilimetro");
+       let calculatedMilimetro;
+     
+       if (unitsMilimetro === "mm") {
+           calculatedMilimetro = inputDistancia;
+       }
+       if (unitsMilimetro === "cm") {
+           calculatedMilimetro = inputDistancia * 0.1;
+           
+       }
+       if (unitsMilimetro === "dm") {
+           calculatedMilimetro = inputDistancia * 0.01;
+           
+       }
+   
+       if (unitsMilimetro === "m") {
+           calculatedMilimetro = inputDistancia * 0.001;
+           
+       }
+     
+       if (unitsMilimetro === "dam") {
+           calculatedMilimetro = inputDistancia / 10000;
+           
+       }
+     
+       if (unitsMilimetro === "hm") {
+           calculatedMilimetro = inputDistancia / 100000;
+           
+       }
+       if (unitsMilimetro === "km") {
+           calculatedMilimetro = inputDistancia  / 1000000;
+           
+       }
+     
+       conversionMilimetro.innerHTML = calculatedMilimetro;
+     };
+   
+     calculateMilimetro();
+    </script>
+
+<!--PESO-->
+<!--Tonelada-->
+<script type="text/javascript">
+    const calculateTon = () => {
+       const inputPeso = document.getElementById("inputPeso").value;
+       const unitsTon = document.getElementById("unitsTon").value;
+       const conversionTon = document.getElementById("conversionTon");
+       let calculatedTon;
+     
+       if (unitsTon === "ton") {
+           calculatedTon = inputPeso;
+       }
+       if (unitsTon === "μg") {
+           calculatedTon = inputPeso * 1 * 1e+12;
+       }
+       if (unitsTon === "mg") {
+           calculatedTon = inputPeso * 1 * 1e+9;
+       }
+   	
+	   if (unitsTon === "kg") {
+           calculatedTon = inputPeso * 1000;
+       }
+       
+
+       if (unitsTon === "g") {
+           calculatedTon = inputPeso * 1e+6;
+       }
+     
+       conversionTon.innerHTML = calculatedTon;
+     };
+   
+     calculateTon();
+
+    </script>
+<!--Quilograma-->
+<script type="text/javascript">
+    const calculateKgrama = () => {
+       const inputPeso = document.getElementById("inputPeso").value;
+       const unitsKgrama = document.getElementById("unitsKgrama").value;
+       const conversionKgrama = document.getElementById("conversionKgrama");
+       let calculatedKgrama;
+     
+       if (unitsKgrama === "kg") {
+           calculatedKgrama = inputPeso;
+       }
+       if (unitsKgrama === "μg") {
+           calculatedKgrama = inputPeso * 1 * 1e+9;
+       }
+       if (unitsKgrama === "mg") {
+           calculatedKgrama = inputPeso * 1 * 1e+6;
+       }
+   	
+	   if (unitsKgrama === "g") {
+           calculatedKgrama = inputPeso * 1000;
+       }
+       
+
+       if (unitsKgrama === "ton") {
+           calculatedKgrama = inputPeso / 1000;
+       }
+     
+       conversionKgrama.innerHTML = calculatedKgrama;
+     };
+   
+     calculateKgrama();
+
+    </script>
+<!--Grama-->
+<script type="text/javascript">
+    const calculateGrama = () => {
+       const inputPeso = document.getElementById("inputPeso").value;
+       const unitsGrama = document.getElementById("unitsGrama").value;
+       const conversionGrama = document.getElementById("conversionGrama");
+       let calculatedGrama;
+     
+       if (unitsGrama === "g") {
+           calculatedGrama = inputPeso;
+       }
+       if (unitsGrama === "μg") {
+           calculatedGrama = inputPeso * 1 * 1e+6;
+       }
+       if (unitsGrama === "mg") {
+           calculatedGrama = inputPeso * 1000;
+       }
+   	
+	   if (unitsGrama === "kg") {
+           calculatedGrama = inputPeso / 1000;
+       }
+       
+
+       if (unitsGrama === "ton") {
+           calculatedGrama = inputPeso / 1e+6;
+       }
+     
+       conversionGrama.innerHTML = calculatedGrama;
+     };
+   
+     calculateGrama();
+
+    </script>  
+<!--Miligrama-->
+<script type="text/javascript">
+    const calculateMiligrama = () => {
+       const inputPeso = document.getElementById("inputPeso").value;
+       const unitsMiligrama = document.getElementById("unitsMiligrama").value;
+       const conversionMiligrama = document.getElementById("conversionMiligrama");
+       let calculatedMiligrama;
+     
+       if (unitsMiligrama === "mg") {
+           calculatedMiligrama = inputPeso;
+       }
+       if (unitsMiligrama === "μg") {
+           calculatedMiligrama = inputPeso * 1 * 1e+6;
+       }
+       if (unitsMiligrama === "g") {
+           calculatedMiligrama = inputPeso / 1000;
+       }
+   	
+	   if (unitsMiligrama === "kg") {
+           calculatedMiligrama = inputPeso / 1e+6;
+       }
+       
+
+       if (unitsMiligrama === "ton") {
+           calculatedMiligrama = inputPeso / 1e+9;
+       }
+     
+       conversionMiligrama.innerHTML = calculatedMiligrama;
+     };
+   
+     calculateMiligrama();
+   </script>  
+<!--Micrograma-->
+<script type="text/javascript">
+    const calculateMicrograma = () => {
+       const inputPeso = document.getElementById("inputPeso").value;
+       const unitsMicrograma = document.getElementById("unitsMicrograma").value;
+       const conversionMicrograma = document.getElementById("conversionMicrograma");
+       let calculatedMicrograma;
+     
+       if (unitsMicrograma === "μg") {
+           calculatedMicrograma = inputPeso;
+       }
+       if (unitsMicrograma === "mg") {
+           calculatedMicrograma = inputPeso / 1000;
+       }
+       if (unitsMicrograma === "ton") {
+           calculatedMicrograma = inputPeso / 1e+12;
+       }
+   	
+	   if (unitsMicrograma === "g") {
+           calculatedMicrograma = inputPeso / 1e+6;
+       }
+       
+       if (unitsMicrograma === "kg") {
+           calculatedMicrograma = inputPeso / 1e+9;
+       }
+     
+       conversionMicrograma.innerHTML = calculatedMicrograma;
+     };
+   
+     calculateMicrograma();
+   </script>  
+
+<!--TEMPO-->
+<!--dia-->
+<script type="text/javascript">
+    const calculateDia = () => {
+       const inputTempo = document.getElementById("inputTempo").value;
+       const unitsDia = document.getElementById("unitsDia").value;
+       const conversionDia = document.getElementById("conversionDia");
+       let calculatedDia;
+     
+       if (unitsDia === "dia") {
+           calculatedDia = inputTempo;
+       }
+       if (unitsDia === "milissegundos") {
+           calculatedDia = inputTempo *  8.64e+7;
+       }
+       if (unitsDia === "segundos") {
+           calculatedDia = inputTempo * 86400;
+       }
+   	
+	   if (unitsDia === "minutos") {
+           calculatedDia = inputTempo * 1440;
+       }
+       
+       if (unitsDia === "hora") {
+           calculatedDia = inputTempo * 24;
+       }
+       conversionDia.innerHTML = calculatedDia;
+     };
+   
+     calculateDia();
+
+    </script>
+<!--hora-->
+<script type="text/javascript">
+    const calculateHora = () => {
+       const inputTempo = document.getElementById("inputTempo").value;
+       const unitsHora = document.getElementById("unitsHora").value;
+       const conversionHora = document.getElementById("conversionHora");
+       let calculatedHora;
+     
+       if (unitsHora === "hora") {
+           calculatedHora = inputTempo;
+       }
+       if (unitsHora === "milissegundos") {
+           calculatedHora = inputTempo * 3.6e+6;
+       }
+       if (unitsHora === "segundos") {
+           calculatedHora = inputTempo * 3600;
+       }
+   	
+	   if (unitsHora === "minutos") {
+           calculatedHora = inputTempo * 60;
+       }
+       
+       if (unitsHora === "dia") {
+           calculatedHora = inputTempo / 24;
+           calculatedHora = calculatedHora.toFixed(5);
+       }
+       conversionHora.innerHTML = calculatedHora;
+     };
+   
+     calculateHora();
+
+    </script>
+<!--minutos-->
+<script type="text/javascript">
+    const calculateTempo = () => {
+       const inputTempo = document.getElementById("inputTempo").value;
+       const unitsTempo = document.getElementById("unitsTempo").value;
+       const conversionTempo = document.getElementById("conversionTempo");
+       let calculatedTempo;
+     
+       if (unitsTempo === "minutos") {
+           calculatedTempo = inputTempo;
+       }
+       if (unitsTempo === "milissegundos") {
+           calculatedTempo = inputTempo * 60000;
+       }
+       if (unitsTempo === "segundos") {
+           calculatedTempo = inputTempo * 60;
+       }
+   	
+	   if (unitsTempo === "hora") {
+           calculatedTempo = inputTempo / 60;
+       }
+       
+       if (unitsTempo === "dia") {
+           calculatedTempo = inputTempo / 1440;
+       }
+       conversionTempo.innerHTML = calculatedTempo;
+     };
+   
+     calculateTempo();
+
+    </script>
+<!--segundos-->
+<script type="text/javascript">
+    const calculateSeg = () => {
+       const inputTempo = document.getElementById("inputTempo").value;
+       const unitsSeg = document.getElementById("unitsSeg").value;
+       const conversionSeg = document.getElementById("conversionSeg");
+       let calculatedSeg;
+     
+       if (unitsSeg === "segundos") {
+           calculatedSeg = inputTempo;
+       }
+       if (unitsSeg === "milissegundos") {
+           calculatedSeg = inputTempo * 1000;
+       }
+       if (unitsSeg === "minutos") {
+           calculatedSeg = inputTempo * 60;
+       }
+   	
+	   if (unitsSeg === "hora") {
+           calculatedSeg = inputTempo / 3600;
+       }
+       
+       if (unitsSeg === "dia") {
+           calculatedSeg = inputTempo / 86400;
+       }
+       conversionSeg.innerHTML = calculatedSeg;
+     };
+   
+     calculateSeg();
+
+    </script>
+<!--milissegundos-->
+<script type="text/javascript">
+    const calculateMSeg = () => {
+       const inputTempo = document.getElementById("inputTempo").value;
+       const unitsMSeg = document.getElementById("unitsMSeg").value;
+       const conversionMSeg = document.getElementById("conversionMSeg");
+       let calculatedMSeg;
+     
+       if (unitsMSeg === "milissegundos") {
+           calculatedMSeg = inputTempo;
+       }
+       if (unitsMSeg === "segundos") {
+           calculatedMSeg = inputTempo / 1000;
+       }
+       if (unitsMSeg === "minutos") {
+           calculatedMSeg = inputTempo / 60000;
+       }
+   	
+	   if (unitsMSeg === "hora") {
+           calculatedMSeg = inputTempo /  3.6e+6;
+       }
+       
+       if (unitsMSeg === "dia") {
+           calculatedMSeg = inputTempo / 8.64e+7;
+       }
+       conversionMSeg.innerHTML = calculateMSeg;
+     };
+   
+     calculateMSeg();
+
+    </script>
+<!--TEMPERATURA-->
+<!--Celsius-->
+<script type="text/javascript">
+    const calculateTemperatura = () => {
+       const inputTemperatura = document.getElementById("inputTemperatura").value;
+       const unitsTemperatura = document.getElementById("unitsTemperatura").value;
+       const conversionTemperatura = document.getElementById("conversionTemperatura");
+       let calculatedTemperatura;
+     
+       if (unitsTemperatura === "celsius") {
+           calculatedTemperatura = inputTemperatura;
+       }
+       if (unitsTemperatura === "fahrenheit") {
+           calculatedTemperatura = inputTemperatura * 9 / 5 + 32 ;
+       }
+       if (unitsTemperatura === "kelvin") {
+           calculatedTemperatura = inputTemperatura * 1 + 273.15;
+       }
+   	
+       conversionTemperatura.innerHTML = calculatedTemperatura;
+     };
+   
+     calculateTemperatura();
+
+    </script>
+<!--Fahrenheit-->
+<script type="text/javascript">
+    const calculateFahrenheit = () => {
+       const inputTemperatura = document.getElementById("inputTemperatura").value;
+       const unitsFahrenheit = document.getElementById("unitsFahrenheit").value;
+       const conversionFahrenheit = document.getElementById("conversionFahrenheit");
+       let calculatedFahrenheit;
+     
+       if (unitsFahrenheit === "celsiusfahrenheit") {
+           calculatedFahrenheit = inputTemperatura;
+       }
+       if (unitsFahrenheit === "celsius") {
+           calculatedFahrenheit = (inputTemperatura - 32) * 5 / 9 ;
+           calculatedFahrenheit = calculatedFahrenheit.toFixed(2);
+       }
+       if (unitsFahrenheit === "kelvin") {
+           calculatedFahrenheit = (inputTemperatura - 32) * 5 / 9 + 273.15;
+           calculatedFahrenheit = calculatedFahrenheit.toFixed(2);
+       }
+   	
+       conversionFahrenheit.innerHTML = calculatedFahrenheit;
+     };
+   
+     calculateFahrenheit();
+
+    </script>
+<!--Kelvin-->
+<script type="text/javascript">
+    const calculateKelvin = () => {
+       const inputTemperatura = document.getElementById("inputTemperatura").value;
+       const unitsKelvin = document.getElementById("unitsKelvin").value;
+       const conversionKelvin = document.getElementById("conversionKelvin");
+       let calculatedKelvin;
+     
+       if (unitsKelvin === "kelvin") {
+           calculatedKelvin = inputTemperatura;
+       }
+       if (unitsKelvin === "fahrenheit") {
+           calculatedKelvin = (inputTemperatura - 273.15) * 9 / 5 + 32;
+           calculatedKelvin = calculatedKelvin.toFixed(2);
+       }
+       if (unitsKelvin === "celsius") {
+           calculatedKelvin = inputTemperatura - 273.15;
+           calculatedKelvin = calculatedKelvin.toFixed(2);
+       }
+   	
+       conversionKelvin.innerHTML = calculatedKelvin;
+     };
+   
+     calculateKelvin();
+
+    </script>
+<!--MEMORIA DIGITAL-->
+<!--byte-->
+<script type="text/javascript">
+    const calculateMDigital = () => {
+       const inputMDigital = document.getElementById("inputMDigital").value;
+       const unitsMDigital = document.getElementById("unitsMDigital").value;
+       const conversionMDigital = document.getElementById("conversionMDigital");
+       let calculatedMDigital;
+     
+       if (unitsMDigital === "byte") {
+           calculatedMDigital = inputMDigital;
+       }
+       if (unitsMDigital === "kilobyte") {
+           calculatedMDigital = inputMDigital / 1000;
+       }
+       if (unitsMDigital === "megabyte") {
+           calculatedMDigital = inputMDigital * 1 / 1e+6;
+       }
+       if (unitsMDigital === "gigabyte") {
+           calculatedMDigital = inputMDigital * 1 / 1e+9;
+       }
+       if (unitsMDigital === "terabyte") {
+           calculatedMDigital = inputMDigital * 1 / 1e+12;
+       }
+       if (unitsMDigital === "petabyte") {
+           calculatedMDigital = inputMDigital * 1 / 1e+15;
+       }
+       if (unitsMDigital === "bit") {
+           calculatedMDigital = inputMDigital * 8;
+       }
+       if (unitsMDigital === "kilobit") {
+           calculatedMDigital = inputMDigital * 1 / 125;
+       }
+       if (unitsMDigital === "megabit") {
+        calculatedMDigital = inputMDigital * 1 / 125000;
+       }
+       if (unitsMDigital === "gigabit") {
+           calculatedMDigital = inputMDigital * 1 / 1.25e+8;
+       }
+       if (unitsMDigital === "terabit") {
+        calculatedMDigital = inputMDigital * 1 / 1.25e+11;
+       }
+       if (unitsMDigital === "petabit") {
+        calculatedMDigital = inputMDigital * 1 / 1.25e+14;
+       }
+
+       conversionMDigital.innerHTML = calculatedMDigital;
+     };
+   
+     calculateMDigital();
+
+    </script>
+
+<!--Kilobyte-->
+<script type="text/javascript">
+    const calculateKB = () => {
+       const inputMDigital = document.getElementById("inputMDigital").value;
+       const unitsKB = document.getElementById("unitsKB").value;
+       const conversionKB = document.getElementById("conversionKB");
+       let calculatedKB;
+     
+       if (unitsKB === "kilobyte") {
+           calculatedKB = inputMDigital;
+       }
+       if (unitsKB === "byte") {
+           calculatedKB = inputMDigital * 1000;
+       }
+       if (unitsKB === "megabyte") {
+           calculatedKB = inputMDigital / 1000;
+       }
+       if (unitsKB === "gigabyte") {
+           calculatedKB = inputMDigital * 1 / 1e+6;
+       }
+       if (unitsKB === "terabyte") {
+           calculatedKB = inputMDigital * 1 / 1e+9;
+       }
+       if (unitsKB === "petabyte") {
+           calculatedKB = inputMDigital * 1 / 1e+12;
+       }
+       if (unitsKB === "bit") {
+           calculatedKB = inputMDigital * 8000;
+       }
+       if (unitsKB === "kilobit") {
+           calculatedKB = inputMDigital * 8;
+       }
+       if (unitsKB === "megabit") {
+        calculatedKB = inputMDigital / 125;
+       }
+       if (unitsKB === "gigabit") {
+           calculatedKB = inputMDigital / 125000;
+       }
+       if (unitsKB === "terabit") {
+        calculatedKB = inputMDigital  / 1.25e+8;
+       }
+       if (unitsKB === "petabit") {
+        calculatedKB = inputMDigital / 1.25e+11;
+       }
+
+       conversionKB.innerHTML = calculatedKB;
+     };
+   
+     calculateKB();
+
+    </script>
+<!--Megabyte-->
+<script type="text/javascript">
+    const calculateMB = () => {
+       const inputMDigital = document.getElementById("inputMDigital").value;
+       const unitsMB = document.getElementById("unitsMB").value;
+       const conversionMB = document.getElementById("conversionMB");
+       let calculatedMB;
+     
+       if (unitsMB === "megabyte") {
+           calculatedMB = inputMDigital;
+       }
+       if (unitsMB === "byte") {
+           calculatedMB = inputMDigital * 1e+6;
+       }
+       if (unitsMB === "kilobyte") {
+           calculatedMB = inputMDigital * 1000;
+       }
+       if (unitsMB === "gigabyte") {
+           calculatedMB = inputMDigital / 1000;
+       }
+       if (unitsMB === "terabyte") {
+           calculatedMB = inputMDigital / 1e+6;
+       }
+       if (unitsMB === "petabyte") {
+           calculatedMB = inputMDigital / 1e+9;
+       }
+       if (unitsMB === "bit") {
+           calculatedMB = inputMDigital * 8e+6;
+       }
+       if (unitsMB === "kilobit") {
+           calculatedMB = inputMDigital / 1000;
+       }
+       if (unitsMB === "megabit") {
+        calculatedMB = inputMDigital / 1e+6;
+       }
+       if (unitsMB === "gigabit") {
+           calculatedMB = inputMDigital / 1e+9;
+       }
+       if (unitsMB === "terabit") {
+        calculatedMB = inputMDigital  / 1e+12;
+       }
+       if (unitsMB === "petabit") {
+        calculatedMB = inputMDigital / 1e+15;
+       }
+
+       conversionMB.innerHTML = calculatedMB;
+     };
+   
+     calculateMB();
+
+    </script>
+<!--GigaByte-->
+<script type="text/javascript">
+    const calculateGB = () => {
+       const inputMDigital = document.getElementById("inputMDigital").value;
+       const unitsGB = document.getElementById("unitsGB").value;
+       const conversionGB = document.getElementById("conversionGB");
+       let calculatedGB;
+     
+       if (unitsGB === "gigabyte") {
+           calculatedGB = inputMDigital;
+       }
+       if (unitsGB === "byte") {
+           calculatedGB = inputMDigital * 1e+9;
+       }
+       if (unitsGB === "kilobyte") {
+           calculatedGB = inputMDigital * 1e+6;
+       }
+       if (unitsGB === "megabyte") {
+           calculatedGB = inputMDigital * 1000;
+       }
+       if (unitsGB === "terabyte") {
+           calculatedGB = inputMDigital / 1000;
+       }
+       if (unitsGB === "petabyte") {
+           calculatedGB = inputMDigital / 1e+6;
+       }
+       if (unitsGB === "bit") {
+           calculatedGB = inputMDigital * 8e+9;
+       }
+       if (unitsGB === "kilobit") {
+           calculatedGB = inputMDigital * 8e+6;
+       }
+       if (unitsGB === "megabit") {
+           calculatedGB = inputMDigital * 8000;
+       }
+       if (unitsGB === "gigabit") {
+           calculatedGB = inputMDigital * 8;
+       }
+       if (unitsGB === "terabit") {
+           calculatedGB = inputMDigital  / 125;
+       }
+       if (unitsGB === "petabit") {
+           calculatedGB = inputMDigital / 125000;
+       }
+
+       conversionGB.innerHTML = calculatedGB;
+     };
+   
+     calculateGB();
+
+    </script>
+<!--Terabyte-->
+<script type="text/javascript">
+    const calculateTB = () => {
+       const inputMDigital = document.getElementById("inputMDigital").value;
+       const unitsTB = document.getElementById("unitsTB").value;
+       const conversionTB = document.getElementById("conversionTB");
+       let calculatedTB;
+     
+       if (unitsTB === "terabyte") {
+           calculatedTB = inputMDigital;
+       }
+       if (unitsTB === "byte") {
+           calculatedTB = inputMDigital * 1e+12;
+       }
+       if (unitsTB === "kilobyte") {
+           calculatedTB = inputMDigital * 1e+9;
+       }
+       if (unitsTB === "megabyte") {
+           calculatedTB = inputMDigital * 1e+6;
+       }
+       if (unitsTB === "gigabyte") {
+           calculatedTB = inputMDigital * 1000;
+       }
+       if (unitsTB === "petabyte") {
+           calculatedTB = inputMDigital / 1000;
+       }
+       if (unitsTB === "bit") {
+           calculatedTB = inputMDigital * 8e+12;
+       }
+       if (unitsTB === "kilobit") {
+           calculatedTB = inputMDigital * 8e+9;
+       }
+       if (unitsTB === "megabit") {
+           calculatedTB = inputMDigital * 8e+6;
+       }
+       if (unitsTB === "gigabit") {
+           calculatedTB = inputMDigital * 8000;
+       }
+       if (unitsTB === "terabit") {
+           calculatedTB = inputMDigital  * 8;
+       }
+       if (unitsTB === "petabit") {
+           calculatedTB = inputMDigital / 125;
+       }
+
+       conversionTB.innerHTML = calculatedTB;
+     };
+   
+     calculateTB();
+
+    </script>
+<!--PetaByte-->
+<script type="text/javascript">
+    const calculatePB = () => {
+       const inputMDigital = document.getElementById("inputMDigital").value;
+       const unitsPB = document.getElementById("unitsPB").value;
+       const conversionPB = document.getElementById("conversionPB");
+       let calculatedPB;
+     
+       if (unitsPB === "petabyte") {
+           calculatedPB = inputMDigital;
+       }
+       if (unitsPB === "byte") {
+           calculatedPB = inputMDigital * 1e+15;
+       }
+       if (unitsPB === "kilobyte") {
+           calculatedPB = inputMDigital * 1e+12;
+       }
+       if (unitsPB === "megabyte") {
+           calculatedPB = inputMDigital * 1e+9;
+       }
+       if (unitsPB === "gigabyte") {
+           calculatedPB = inputMDigital * 1e+6;
+       }
+       if (unitsPB === "terabyte") {
+           calculatedPB = inputMDigital * 1000;
+       }
+       if (unitsPB === "bit") {
+           calculatedPB = inputMDigital * 8e+15;
+       }
+       if (unitsPB === "kilobit") {
+           calculatedPB = inputMDigital * 8e+12;
+       }
+       if (unitsPB === "megabit") {
+           calculatedPB = inputMDigital * 8e+9;
+       }
+       if (unitsPB === "gigabit") {
+           calculatedPB = inputMDigital * 8e+6;
+       }
+       if (unitsPB === "terabit") {
+           calculatedPB = inputMDigital  * 8000;
+       }
+       if (unitsPB === "petabit") {
+           calculatedPB = inputMDigital * 8;
+       }
+
+       conversionPB.innerHTML = calculatedPB;
+     };
+   
+     calculatePB();
+
+    </script>
+<!--Bit-->
+<script type="text/javascript">
+    const calculateBit = () => {
+       const inputMDigital = document.getElementById("inputMDigital").value;
+       const unitsBit = document.getElementById("unitsBit").value;
+       const conversionBit = document.getElementById("conversionBit");
+       let calculatedBit;
+     
+       if (unitsBit === "bit") {
+           calculatedBit = inputMDigital;
+       }
+       if (unitsBit === "byte") {
+           calculatedBit = inputMDigital / 8;
+       }
+       if (unitsBit === "megabyte") {
+           calculatedBit = inputMDigital / 8e+6;
+       }
+       if (unitsBit === "gigabyte") {
+           calculatedBit = inputMDigital / 8e+9;
+       }
+       if (unitsBit === "terabyte") {
+           calculatedBit = inputMDigital / 8e+12;
+       }
+       if (unitsBit === "petabyte") {
+           calculatedBit = inputMDigital / 8e+15;
+       }
+       if (unitsBit === "kilobyte") {
+           calculatedBit = inputMDigital / 8000;
+       }
+       if (unitsBit === "kilobit") {
+           calculatedBit = inputMDigital / 1000;
+       }
+       if (unitsBit === "megabit") {
+           calculatedBit = inputMDigital / 1e+6;
+       }
+       if (unitsBit === "gigabit") {
+           calculatedBit = inputMDigital / 1e+9;
+       }
+       if (unitsBit === "terabit") {
+           calculatedBit = inputMDigital  / 1e+12;
+       }
+       if (unitsBit === "petabit") {
+           calculatedBit = inputMDigital / 1e+15;
+       }
+
+       conversionBit.innerHTML = calculatedBit;
+     };
+   
+     calculateBit();
+
+    </script>
+<!--Kilobit-->
+<script type="text/javascript">
+    const calculateKBit = () => {
+       const inputMDigital = document.getElementById("inputMDigital").value;
+       const unitsKBit = document.getElementById("unitsKBit").value;
+       const conversionKBit = document.getElementById("conversionKBit");
+       let calculatedKBit;
+     
+       if (unitsKBit === "kilobit") {
+           calculatedKBit = inputMDigital;
+       }
+       if (unitsKBit === "byte") {
+           calculatedKBit = inputMDigital * 125;
+       }
+       if (unitsKBit === "megabyte") {
+           calculatedKBit = inputMDigital / 8000;
+       }
+       if (unitsKBit === "gigabyte") {
+           calculatedKBit = inputMDigital / 8e+6;
+       }
+       if (unitsKBit === "terabyte") {
+           calculatedKBit = inputMDigital / 8e+9;
+       }
+       if (unitsKBit === "petabyte") {
+           calculatedKBit = inputMDigital / 8e+12;
+       }
+       if (unitsKBit === "kilobyte") {
+           calculatedKBit = inputMDigital * 8;
+       }
+       if (unitsKBit === "bit") {
+           calculatedKBit = inputMDigital * 1000;
+       }
+       if (unitsKBit === "megabit") {
+           calculatedKBit = inputMDigital / 1000;
+       }
+       if (unitsKBit === "gigabit") {
+           calculatedKBit = inputMDigital / 1e+6;
+       }
+       if (unitsKBit === "terabit") {
+           calculatedKBit = inputMDigital  / 1e+9;
+       }
+       if (unitsKBit === "petabit") {
+           calculatedKBit = inputMDigital / 1e+12;
+       }
+
+       conversionKBit.innerHTML = calculatedKBit;
+     };
+   
+     calculateKBit();
+
+    </script>
+<!--Megabit-->
+<script type="text/javascript">
+    const calculateMBit = () => {
+       const inputMDigital = document.getElementById("inputMDigital").value;
+       const unitsMBit = document.getElementById("unitsMBit").value;
+       const conversionMBit = document.getElementById("conversionMBit");
+       let calculatedMBit;
+     
+       if (unitsMBit === "kilobit") {
+           calculatedMBit = inputMDigital;
+       }
+       if (unitsMBit === "byte") {
+           calculatedMBit = inputMDigital * 125;
+       }
+       if (unitsMBit === "megabyte") {
+           calculatedMBit = inputMDigital / 8000;
+       }
+       if (unitsMBit === "gigabyte") {
+           calculatedMBit = inputMDigital / 8e+6;
+       }
+       if (unitsMBit === "terabyte") {
+           calculatedMBit = inputMDigital / 8e+9;
+       }
+       if (unitsMBit === "petabyte") {
+           calculatedMBit = inputMDigital / 8e+12;
+       }
+       if (unitsMBit === "kilobyte") {
+           calculatedMBit = inputMDigital * 8;
+       }
+       if (unitsMBit === "bit") {
+           calculatedMBit = inputMDigital * 1000;
+       }
+       if (unitsMBit === "megabit") {
+           calculatedMBit = inputMDigital / 1000;
+       }
+       if (unitsMBit === "gigabit") {
+           calculatedMBit = inputMDigital / 1e+6;
+       }
+       if (unitsMBit === "terabit") {
+           calculatedMBit = inputMDigital  / 1e+9;
+       }
+       if (unitsMBit === "petabit") {
+           calculatedMBit = inputMDigital / 1e+12;
+       }
+
+       conversionMBit.innerHTML = calculatedMBit;
+     };
+   
+     calculateMBit();
+
+    </script>
+<!--GigaBit-->
+<script>
+const calculateGBit = () => {
+    const inputMDigital = document.getElementById("inputMDigital").value;
+    const unitsGBit = document.getElementById("unitsGBit").value;
+    const conversionGBit = document.getElementById("conversionGBit");
+    let calculatedGBit;
+  
+    if (unitsGBit === "gigabit") {
+        calculatedGBit = inputMDigital;
+    }
+    if (unitsGBit === "byte") {
+        calculatedGBit = inputMDigital * 1.25e+8;
+    }
+    if (unitsGBit === "megabyte") {
+        calculatedGBit = inputMDigital * 125;
+    }
+    if (unitsGBit === "gigabyte") {
+        calculatedGBit = inputMDigital / 8;
+    }
+    if (unitsGBit === "terabyte") {
+        calculatedGBit = inputMDigital / 8000;
+    }
+    if (unitsGBit === "petabyte") {
+        calculatedGBit = inputMDigital / 8e+6;
+    }
+    if (unitsGBit === "kilobyte") {
+        calculatedGBit = inputMDigital * 125000;
+    }
+    if (unitsGBit === "bit") {
+        calculatedGBit = inputMDigital * 1e+6;
+    }
+    if (unitsGBit === "kilobit") {
+        calculatedGBit = inputMDigital * 1000;
+    }
+    if (unitsGBit === "megabit") {
+        calculatedGBit = inputMDigital / 1000;
+    }
+    if (unitsGBit === "terabit") {
+        calculatedGBit = inputMDigital  / 1e+6;
+    }
+    if (unitsGBit === "petabit") {
+        calculatedGBit = inputMDigital / 1e+9;
+    }
+
+    conversionGBit.innerHTML = calculatedGBit;
+  };
+
+  calculateGBit();
+</script>
+<!--Terabit-->
+<script>
+const calculateTBit = () => {
+       const inputMDigital = document.getElementById("inputMDigital").value;
+       const unitsTBit = document.getElementById("unitsTBit").value;
+       const conversionTBit = document.getElementById("conversionTBit");
+       let calculatedTBit;
+     
+       if (unitsTBit === "terabit") {
+           calculatedTBit = inputMDigital;
+       }
+       if (unitsTBit === "byte") {
+           calculatedTBit = inputMDigital * 1.25e+11;
+       }
+       if (unitsTBit === "megabyte") {
+           calculatedTBit = inputMDigital * 125000;
+       }
+       if (unitsTBit === "gigabyte") {
+           calculatedTBit = inputMDigital * 125;
+       }
+       if (unitsTBit === "terabyte") {
+           calculatedTBit = inputMDigital / 8;
+       }
+       if (unitsTBit === "petabyte") {
+           calculatedTBit = inputMDigital / 8000;
+       }
+       if (unitsTBit === "kilobyte") {
+           calculatedTBit = inputMDigital * 1.25e+8;
+       }
+       if (unitsTBit === "bit") {
+           calculatedTBit = inputMDigital * 1e+12;
+       }
+       if (unitsTBit === "kilobit") {
+           calculatedTBit = inputMDigital * 1e+9;
+       }
+       if (unitsTBit === "megabit") {
+           calculatedTBit = inputMDigital * 1e+6;
+       }
+       if (unitsTBit === "gigabit") {
+           calculatedTBit = inputMDigital  * 1000;
+       }
+       if (unitsTBit === "petabit") {
+           calculatedTBit = inputMDigital / 1000;
+       }
+
+       conversionTBit.innerHTML = calculatedTBit;
+     };
+   
+     calculateTBit();
+
+</script>
+<!--Petabit-->
+<script>
+const calculatePBit = () => {
+       const inputMDigital = document.getElementById("inputMDigital").value;
+       const unitsPBit = document.getElementById("unitsPBit").value;
+       const conversionPBit = document.getElementById("conversionPBit");
+       let calculatedPBit;
+     
+       if (unitsPBit === "petabit") {
+           calculatedPBit = inputMDigital;
+       }
+       if (unitsPBit === "byte") {
+           calculatedPBit = inputMDigital * 1.25e+14;
+       }
+       if (unitsPBit === "megabyte") {
+           calculatedPBit = inputMDigital * 1.25e+8;
+       }
+       if (unitsPBit === "gigabyte") {
+           calculatedPBit = inputMDigital * 125000;
+       }
+       if (unitsPBit === "terabyte") {
+           calculatedPBit = inputMDigital * 125;
+       }
+       if (unitsPBit === "petabyte") {
+           calculatedPBit = inputMDigital / 8;
+       }
+       if (unitsPBit === "kilobyte") {
+           calculatedPBit = inputMDigital * 1.25e+11;
+       }
+       if (unitsPBit === "bit") {
+           calculatedPBit = inputMDigital * 1e+15;
+       }
+       if (unitsPBit === "kilobit") {
+           calculatedPBit = inputMDigital * 1e+12;
+       }
+       if (unitsPBit === "megabit") {
+           calculatedPBit = inputMDigital * 1e+9;
+       }
+       if (unitsPBit === "gigabit") {
+           calculatedPBit = inputMDigital  * 1e+6;
+       }
+       if (unitsPBit === "terabit") {
+           calculatedPBit = inputMDigital * 1000;
+       }
+       conversionPBit.innerHTML = calculatedPBit;
+     };
+   
+     calculatePBit();
+</script>
+
+
+<!--MOEDA-->
+<!--Dollar-->
+<script type="text/javascript">
+    const calculateMoeda = () => {
+       const inputMoeda = document.getElementById("inputMoeda").value;
+       const unitsMoeda = document.getElementById("unitsMoeda").value;
+       const conversionMoeda= document.getElementById("conversionMoeda");
+       let calculatedMoeda;
+     
+       if (unitsMoeda === "dollar") {
+           calculatedMoeda = inputMoeda;
+       }
+       if (unitsMoeda === "euro") {
+           calculatedMoeda = inputMoeda * 0.89;
+           calculatedMoeda = calculatedMoeda.toFixed(2);
+       }
+       if (unitsMoeda === "real") {
+           calculatedMoeda = inputMoeda * 3.92;
+           calculatedMoeda = calculatedMoeda.toFixed(2);
+       }
+       if (unitsMoeda === "iene") {
+           calculatedMoeda = inputMoeda * 111.49;
+           calculatedMoeda = calculatedMoeda.toFixed(2);
+       }
+       if (unitsMoeda === "boliviano") {
+           calculatedMoeda = inputMoeda * 6.91;
+           calculatedMoeda = calculatedMoeda.toFixed(2);
+       }
+       if (unitsMoeda === "bitcoin") {
+           calculatedMoeda = inputMoeda * 0.00019;
+           calculatedMoeda = calculatedMoeda.toFixed(5);
+       }
+       if (unitsMoeda === "bitcoincash") {
+           calculatedMoeda = inputMoeda * 0.0038;
+           calculatedMoeda = calculatedMoeda.toFixed(4);
+       }
+       if (unitsMoedaEuro === "pesoArgentina") {
+           calculatedMoedaEuro = inputMoeda * 44.45;
+           calculatedMoedaEuro = calculatedMoedaEuro.toFixed(2);
+       }
+       if (unitsMoedaEuro === "solesPeru") {
+           calculatedMoedaEuro = inputMoeda * 3.31;
+           calculatedMoedaEuro = calculatedMoedaEuro.toFixed(2);
+       }
+       if (unitsMoedaEuro === "pesoColombia") {
+           calculatedMoedaEuro = inputMoeda * 3242.20;
+           calculatedMoedaEuro = calculatedMoedaEuro.toFixed(2);
+       } 
+   	
+       conversionMoeda.innerHTML = calculatedMoeda;
+     };
+   
+     calculateMoeda();
+
+    </script>
+<!--Euro-->
+<script type="text/javascript">
+    const calculateMoedaEuro = () => {
+       const inputMoeda = document.getElementById("inputMoeda").value;
+       const unitsMoedaEuro = document.getElementById("unitsMoedaEuro").value;
+       const conversionMoedaEuro = document.getElementById("conversionMoedaEuro");
+       let calculatedMoedaEuro;
+     
+       if (unitsMoedaEuro === "euro") {
+           calculatedMoedaEuro = inputMoeda;
+       }
+       if (unitsMoedaEuro === "dollar") {
+           calculatedMoedaEuro = inputMoeda * 1.12;
+           calculatedMoedaEuro = calculatedMoedaEuro.toFixed(2);
+       }
+       if (unitsMoedaEuro === "real") {
+           calculatedMoedaEuro = inputMoeda * 4.39;
+           calculatedMoedaEuro = calculatedMoedaEuro.toFixed(2);
+       }
+       if (unitsMoedaEuro === "iene") {
+           calculatedMoedaEuro = inputMoeda * 124.76;
+           calculatedMoedaEuro = calculatedMoedaEuro.toFixed(2);
+       }
+       if (unitsMoedaEuro === "boliviano") {
+           calculatedMoedaEuro = inputMoeda * 7.73;
+           calculatedMoedaEuro = calculatedMoedaEuro.toFixed(2);
+       }
+       if (unitsMoedaEuro === "bitcoin") {
+           calculatedMoedaEuro = inputMoeda * 0.00021;
+           calculatedMoedaEuro = calculatedMoedaEuro.toFixed(5);
+       }
+       if (unitsMoedaEuro === "bitcoincash") {
+           calculatedMoedaEuro = inputMoeda * 0.0042;
+           calculatedMoedaEuro = calculatedMoedaEuro.toFixed(2);
+       }
+       if (unitsMoedaEuro === "pesoArgentina") {
+           calculatedMoedaEuro = inputMoeda * 49.83;
+           calculatedMoedaEuro = calculatedMoedaEuro.toFixed(2);
+       }
+       if (unitsMoedaEuro === "solesPeru") {
+           calculatedMoedaEuro = inputMoeda * 3.72;
+           calculatedMoedaEuro = calculatedMoedaEuro.toFixed(2);
+       }
+       if (unitsMoedaEuro === "pesoColombia") {
+           calculatedMoedaEuro = inputMoeda * 3635.00;
+           calculatedMoedaEuro = calculatedMoedaEuro.toFixed(2);
+       } 
+      
+
+   	
+       conversionMoedaEuro.innerHTML = calculatedMoedaEuro;
+     };
+   
+     calculateMoedaEuro();
+
+    </script>
+<!--Real-->
+<script type="text/javascript">
+    const calculateMoedaReal = () => {
+       const inputMoeda = document.getElementById("inputMoeda").value;
+       const unitsMoedaReal = document.getElementById("unitsMoedaReal").value;
+       const conversionMoedaReal = document.getElementById("conversionMoedaReal");
+       let calculatedMoedaReal;
+     
+       if (unitsMoedaReal === "real") {
+           calculatedMoedaReal = inputMoeda;
+       }
+       if (unitsMoedaReal === "dollar") {
+           calculatedMoedaReal = inputMoeda * 0.26;
+           calculatedMoedaReal = calculatedMoedaReal.toFixed(2);
+       }
+       if (unitsMoedaReal === "euro") {
+           calculatedMoedaReal = inputMoeda * 0.23;
+           calculatedMoedaReal = calculatedMoedaReal.toFixed(2);
+       }
+       if (unitsMoedaReal === "iene") {
+           calculatedMoedaReal = inputMoeda * 28.41;
+           calculatedMoedaReal = calculatedMoedaReal.toFixed(2);
+       }
+       if (unitsMoedaReal === "boliviano") {
+           calculatedMoedaReal = inputMoeda * 1.76;
+           calculatedMoedaReal = calculatedMoedaReal.toFixed(2);
+       }
+       if (unitsMoedaReal === "bitcoin") {
+           calculatedMoedaReal = inputMoeda * 0.000048;
+           calculatedMoedaReal = calculatedMoedaReal.toFixed(6);
+       }
+       if (unitsMoedaReal === "bitcoincash") {
+           calculatedMoedaReal = inputMoeda * 0.00096;
+           calculatedMoedaReal = calculatedMoedaReal.toFixed(5);
+       }
+       if (unitsMoedaReal === "pesoArgentina") {
+           calculatedMoedaReal = inputMoeda * 11.28;
+           calculatedMoedaReal = calculatedMoedaReal.toFixed(2);
+       }
+       if (unitsMoedaReal === "solesPeru") {
+           calculatedMoedaReal = inputMoeda * 0.84;
+           calculatedMoedaReal = calculatedMoedaReal.toFixed(2);
+       }
+       if (unitsMoedaReal === "pesoColombia") {
+           calculatedMoedaReal = inputMoeda * 822.98;
+           calculatedMoedaReal = calculatedMoedaReal.toFixed(2);
+       }
+
+   	
+       conversionMoedaReal.innerHTML = calculatedMoedaReal;
+
+     };
+   
+     calculateMoedaEuro();
+
+    </script>
+
+<!--Iene-->
+<script type="text/javascript">
+const calculateMoedaIene = () => {
+       const inputMoeda = document.getElementById("inputMoeda").value;
+       const unitsMoedaIene = document.getElementById("unitsMoedaIene").value;
+       const conversionMoedaIene = document.getElementById("conversionMoedaIene");
+       let calculatedMoedaIene;
+     
+       if (unitsMoedaIene === "iene") {
+           calculatedMoedaReal = inputMoeda;
+       }
+       if (unitsMoedaIene === "dollar") {
+           calculatedMoedaIene = inputMoeda * 0.0090;
+           calculatedMoedaIene = calculatedMoedaIene.toFixed(2)
+       }
+       if (unitsMoedaIene === "euro") {
+           calculatedMoedaIene = inputMoeda * 0.0080;
+           calculatedMoedaIene = calculatedMoedaIene.toFixed(2)
+       }
+       if (unitsMoedaIene === "real") {
+           calculatedMoedaIene = inputMoeda * 0.036;
+           calculatedMoedaIene = calculatedMoedaIene.toFixed(2)
+       }
+       if (unitsMoedaIene === "boliviano") {
+           calculatedMoedaIene = inputMoeda * 0.062;
+           calculatedMoedaIene = calculatedMoedaIene.toFixed(2)
+       }
+       if (unitsMoedaIene === "bitcoin") {
+           calculatedMoedaIene = inputMoeda * 0.0000017;
+           calculatedMoedaIene = calculatedMoedaIene.toFixed(7);
+       }
+       if (unitsMoedaIene === "bitcoincash") {
+           calculatedMoedaIene = inputMoeda * 0.000034;
+           calculatedMoedaIene = calculatedMoedaIene.toFixed(6);
+       }
+       if (unitsMoedaIene === "solesPeru") {
+           calculatedMoedaIene = inputMoeda * 0.030;
+           calculatedMoedaIene = calculatedMoedaIene.toFixed(2)
+       }
+       if (unitsMoedaIene === "pesoColombia") {
+           calculatedMoedaIene = inputMoeda * 29.27;
+           calculatedMoedaIene = calculatedMoedaIene.toFixed(2)
+       }
+       if (unitsMoedaIene === "pesoArgentina") {
+           calculatedMoedaIene = inputMoeda * 0.40;
+           calculatedMoedaIene = calculatedMoedaIene.toFixed(2);
+       }
+
+   	
+       conversionMoedaIene.innerHTML = calculatedMoedaIene;
+
+     };
+   
+     calculateMoedaIene();
+</script>
+
+<!--Boliviano-->
+<script type="text/javascript">
+const calculateMoedaBol = () => {
+       const inputMoeda = document.getElementById("inputMoeda").value;
+       const unitsMoedaBol = document.getElementById("unitsMoedaBol").value;
+       const conversionMoedaBol = document.getElementById("conversionMoedaBol");
+       let calculatedMoedaBol;
+     
+       if (unitsMoedaBol === "boliviano") {
+           calculatedMoedaBol = inputMoeda;
+       }
+       if (unitsMoedaBol === "dollar") {
+           calculatedMoedaBol = inputMoeda * 0.14;
+           calculatedMoedaBol = calculatedMoedaBol.toFixed(2)
+       }
+       if (unitsMoedaBol === "euro") {
+           calculatedMoedaBol = inputMoeda * 0.13;
+           calculatedMoedaBol = calculatedMoedaBol.toFixed(2)
+       }
+       if (unitsMoedaBol === "real") {
+           calculatedMoedaBol = inputMoeda * 0.57;
+           calculatedMoedaBol = calculatedMoedaBol.toFixed(2)
+       }
+       if (unitsMoedaBol === "iene") {
+           calculatedMoedaBol = inputMoeda * 16.10;
+           calculatedMoedaBol = calculatedMoedaBol.toFixed(2)
+       }
+       if (unitsMoedaBol === "bitcoin") {
+           calculatedMoedaBol = inputMoeda * 0.000027;
+           calculatedMoedaBol = calculatedMoedaBol.toFixed(6);
+       }
+       if (unitsMoedaBol === "bitcoincash") {
+           calculatedMoedaBol = inputMoeda * 0.00054;
+           calculatedMoedaBol = calculatedMoedaBol.toFixed(5);
+       }
+       if (unitsMoedaBol === "solesPeru") {
+           calculatedMoedaBol = inputMoeda * 0.48;
+           calculatedMoedaBol = calculatedMoedaBol.toFixed(2)
+       }
+       if (unitsMoedaBol === "pesoColombia") {
+           calculatedMoedaBol = inputMoeda * 468.08;
+           calculatedMoedaBol = calculatedMoedaBol.toFixed(2)
+       }
+       if (unitsMoedaBol === "pesoArgentina") {
+           calculatedMoedaBol = inputMoeda * 6.47;
+           calculatedMoedaBol = calculatedMoedaBol.toFixed(2);
+       }
+
+   	
+       conversionMoedaBol.innerHTML = calculatedMoedaBol;
+
+     };
+   
+     calculateMoedaBol();
+</script>
+
+<!--Bitcoin-->
+<script type="text/javascript">
+const calculateMoedaBTC = () => {
+       const inputMoeda = document.getElementById("inputMoeda").value;
+       const unitsMoedaBTC = document.getElementById("unitsMoedaBTC").value;
+       const conversionMoedaBTC = document.getElementById("conversionMoedaBTC");
+       let calculatedMoedaBTC;
+     
+       if (unitsMoedaBTC === "bitcoin") {
+           calculatedMoedaBTC = inputMoeda;
+       }
+       if (unitsMoedaBTC === "dollar") {
+           calculatedMoedaBTC = inputMoeda * 5401.04;
+           calculatedMoedaBTC = calculatedMoedaBTC.toFixed(2);
+       }
+       if (unitsMoedaBTC === "euro") {
+           calculatedMoedaBTC = inputMoeda * 4832.85;
+           calculatedMoedaBTC = calculatedMoedaBTC.toFixed(2);
+       }
+       if (unitsMoedaBTC === "iene") {
+           calculatedMoedaBTC = inputMoeda * 602188.95;
+           calculatedMoedaBTC = calculatedMoedaBTC.toFixed(2);
+       }
+       if (unitsMoedaBTC === "boliviano") {
+           calculatedMoedaBTC = inputMoeda * 37340.79;
+           calculatedMoedaBTC = calculatedMoedaBTC.toFixed(2);
+       }
+       if (unitsMoedaBTC === "real") {
+           calculatedMoedaBTC = inputMoeda * 21406.48;
+           calculatedMoedaBTC = calculatedMoedaBTC.toFixed(2);
+       }
+       if (unitsMoedaBTC === "bitcoincash") {
+           calculatedMoedaBTC = inputMoeda * 20.42;
+           calculatedMoedaBTC = calculatedMoedaBTC.toFixed(2);
+       }
+       if (unitsMoedaBTC === "solesPeru") {
+           calculatedMoedaBTC = inputMoeda * 17907.15;
+           calculatedMoedaBTC = calculatedMoedaBTC.toFixed(2);
+       }
+       if (unitsMoedaBTC === "pesoColombia") {
+           calculatedMoedaBTC = inputMoeda * 17624403.67;
+           calculatedMoedaBTC = calculatedMoedaBTC.toFixed(2);
+       }
+       if (unitsMoedaBTC === "pesoArgentina") {
+           calculatedMoedaBTC = inputMoeda * 241799.16;
+           calculatedMoedaBTC = calculatedMoedaBTC.toFixed(2);
+       }
+
+   	
+       conversionMoedaBTC.innerHTML = calculatedMoedaBTC;
+
+     };
+   
+     calculateMoedaBTC();
+</script>
+
+<!--BitcoinCash-->
+<script type="text/javascript">
+const calculateMoedaBCH = () => {
+       const inputMoeda = document.getElementById("inputMoeda").value;
+       const unitsMoedaBCH = document.getElementById("unitsMoedaBCH").value;
+       const conversionMoedaBCH = document.getElementById("conversionMoedaBCH");
+       let calculatedMoedaBCH;
+     
+       if (unitsMoedaBCH === "bitcoincash") {
+           calculatedMoedaBCH = inputMoeda;
+       }
+       if (unitsMoedaBCH === "dollar") {
+           calculatedMoedaBCH = inputMoeda * 264.78;
+           calculatedMoedaBCH = calculatedMoedaBCH.toFixed(2);
+       }
+       if (unitsMoedaBCH === "euro") {
+           calculatedMoedaBTC = inputMoeda * 236.90;
+           calculatedMoedaBTC = calculatedMoedaBCH.toFixed(2);
+       }
+       if (unitsMoedaBCH === "iene") {
+           calculatedMoedaBCH = inputMoeda * 29521.12;
+           calculatedMoedaBCH = calculatedMoedaBCH.toFixed(2);
+       }
+       if (unitsMoedaBCH === "boliviano") {
+           calculatedMoedaBCH = inputMoeda * 1828.93;
+           calculatedMoedaBCH = calculatedMoedaBCH.toFixed(2);
+       }
+       if (unitsMoedaBCH === "real") {
+           calculatedMoedaBCH = inputMoeda * 1048.74;
+           calculatedMoedaBCH = calculatedMoedaBCH.toFixed(2);
+       }
+       if (unitsMoedaBCH === "bitcoin") {
+           calculatedMoedaBCH = inputMoeda * 0.049;
+           calculatedMoedaBCH = calculatedMoedaBCH.toFixed(3);
+       }
+       if (unitsMoedaBCH === "solesPeru") {
+           calculatedMoedaBCH = inputMoeda * 877.88;
+           calculatedMoedaBCH = calculatedMoedaBCH.toFixed(2);
+       }
+       if (unitsMoedaBCH === "pesoColombia") {
+           calculatedMoedaBCH = inputMoeda * 864016.86;
+           calculatedMoedaBCH = calculatedMoedaBCH.toFixed(2);
+       }
+       if (unitsMoedaBCH === "pesoArgentina") {
+           calculatedMoedaBCH = inputMoeda * 22853.94;
+           calculatedMoedaBCH = calculatedMoedaBCH.toFixed(2);
+       }
+
+   	
+       conversionMoedaBCH.innerHTML = calculatedMoedaBCH;
+
+     };
+   
+     calculateMoedaBCH();
+</script>
+
+<!--Soles Peru-->
+<script>
+const calculateMoedaSoles = () => {
+       const inputMoeda = document.getElementById("inputMoeda").value;
+       const unitsMoedaSoles = document.getElementById("unitsMoedaSoles").value;
+       const conversionMoedaSoles = document.getElementById("conversionMoedaSoles");
+       let calculatedMoedaSoles;
+     
+       if (unitsMoedaSoles === "solesPeru") {
+        calculatedMoedaSoles = inputMoeda;
+       }
+       if (unitsMoedaSoles === "dollar") {
+           calculatedMoedaSoles = inputMoeda * 0.30;
+           calculatedMoedaSoles = calculatedMoedaSoles.toFixed(2)
+       }
+       if (unitsMoedaSoles === "euro") {
+           calculatedMoedaSoles = inputMoeda * 0.27;
+           calculatedMoedaSoles = calculatedMoedaSoles.toFixed(2)
+       }
+       if (unitsMoedaSoles === "real") {
+           calculatedMoedaSoles = inputMoeda * 1.19;
+           calculatedMoedaSoles = calculatedMoedaSoles.toFixed(2)
+       }
+       if (unitsMoedaSoles === "boliviano") {
+           calculatedMoedaSoles = inputMoeda * 2.08;
+           calculatedMoedaSoles = calculatedMoedaSoles.toFixed(2)
+       }
+       if (unitsMoedaSoles === "bitcoin") {
+           calculatedMoedaSoles = inputMoeda * 0.000056;
+           calculatedMoedaSoles = calculatedMoedaSoles.toFixed(6);
+       }
+       if (unitsMoedaSoles === "bitcoincash") {
+           calculatedMoedaSoles = inputMoeda * 0.0011;
+           calculatedMoedaSoles = calculatedMoedaSoles.toFixed(4);
+       }
+       if (unitsMoedaSoles === "iene") {
+           calculatedMoedaSoles = inputMoeda * 33.63;
+           calculatedMoedaSoles = calculatedMoedaSoles.toFixed(2);
+       }
+       if (unitsMoedaSoles === "pesoColombia") {
+           calculatedMoedaSoles = inputMoeda * 984.21;
+           calculatedMoedaSoles = calculatedMoedaSoles.toFixed(2);
+       }
+       if (unitsMoedaSoles === "pesoArgentina") {
+           calculatedMoedaSoles = inputMoeda * 13.50;
+           calculatedMoedaSoles = calculatedMoedaSoles.toFixed(2);
+       }
+
+   	
+       conversionMoedaSoles.innerHTML = calculatedMoedaSoles;
+
+     };
+   
+     calculateMoedaSoles();
+</script>
+
+<!--Peso Colombia-->
+<script>
+const calculateMoedapesoC = () => {
+       const inputMoeda = document.getElementById("inputMoeda").value;
+       const unitsMoedapesoC = document.getElementById("unitsMoedapesoC").value;
+       const conversionMoedapesoC = document.getElementById("conversionMoedapesoC");
+       let calculatedMoedapesoC;
+     
+       if (unitsMoedapesoC === "pesoColombia") {
+        calculatedMoedapesoC = inputMoeda;
+       }
+       if (unitsMoedapesoC === "dollar") {
+           calculatedMoedapesoC = inputMoeda * 0.00031;
+           calculatedMoedapesoC = calculatedMoedapesoC.toFixed(5);
+       }
+       if (unitsMoedapesoC === "euro") {
+           calculatedMoedapesoC = inputMoeda * 0.00028;
+           calculatedMoedapesoC = calculatedMoedapesoC.toFixed(5);
+       }
+       if (unitsMoedapesoC === "real") {
+           calculatedMoedapesoC = inputMoeda * 0.0012;
+           calculatedMoedapesoC = calculatedMoedapesoC.toFixed(4);
+       }
+       if (unitsMoedapesoC === "boliviano") {
+           calculatedMoedapesoC = inputMoeda * 0.0021;
+           calculatedMoedapesoC = calculatedMoedapesoC.toFixed(4);
+       }
+       if (unitsMoedapesoC === "bitcoin") {
+           calculatedMoedapesoC = inputMoeda * 0.000000058;
+           calculatedMoedapesoC = calculatedMoedapesoC.toFixed(9);
+       }
+       if (unitsMoedapesoC === "bitcoincash") {
+           calculatedMoedapesoC = inputMoeda * 0.0000012;
+           calculatedMoedapesoC = calculatedMoedapesoC.toFixed(7);
+       }
+       if (unitsMoedapesoC === "iene") {
+           calculatedMoedapesoC = inputMoeda * 0.034;
+           calculatedMoedapesoC = calculatedMoedapesoC.toFixed(3);
+       }
+       if (unitsMoedapesoC === "solesPeru") {
+           calculatedMoedapesoC = inputMoeda * 0.0010;
+           calculatedMoedapesoC = calculatedMoedapesoC.toFixed(4);
+       }
+       if (unitsMoedapesoC === "pesoArgentina") {
+           calculatedMoedapesoC = inputMoeda * 0.014;
+           calculatedMoedapesoC = calculatedMoedapesoC.toFixed(3);
+       }
+
+   	
+       conversionMoedapesoC.innerHTML = calculatedMoedapesoC;
+
+     };
+   
+     calculateMoedapesoC();
+</script>
+
+<!--Peso Argentina-->
+<script>
+const calculateMoedapesoA = () => {
+       const inputMoeda = document.getElementById("inputMoeda").value;
+       const unitsMoedapesoA = document.getElementById("unitsMoedapesoA").value;
+       const conversionMoedapesoA = document.getElementById("conversionMoedapesoA");
+       let calculatedMoedapesoA;
+     
+       if (unitsMoedapesoA === "pesoArgentina") {
+        calculatedMoedapesoA = inputMoeda;
+       }
+       if (unitsMoedapesoA === "dollar") {
+           calculatedMoedapesoA = inputMoeda * 0.0022;
+           calculatedMoedapesoA = calculatedMoedapesoA.toFixed(4);
+       }
+       if (unitsMoedapesoA === "euro") {
+           calculatedMoedapesoA = inputMoeda * 0.020;
+           calculatedMoedapesoA = calculatedMoedapesoA.toFixed(3);
+       }
+       if (unitsMoedapesoA === "real") {
+           calculatedMoedapesoA = inputMoeda * 0.088;
+           calculatedMoedapesoA = calculatedMoedapesoA.toFixed(3);
+       }
+       if (unitsMoedapesoA === "boliviano") {
+           calculatedMoedapesoA = inputMoeda * 0.0021;
+           calculatedMoedapesoA = calculatedMoedapesoA.toFixed(4);
+       }
+       if (unitsMoedapesoA === "bitcoin") {
+           calculatedMoedapesoA = inputMoeda * 0.0000041;
+           calculatedMoedapesoA = calculatedMoedapesoA.toFixed(7);
+       }
+       if (unitsMoedapesoA === "bitcoincash") {
+           calculatedMoedapesoA = inputMoeda * 0.000084;
+           calculatedMoedapesoA = calculatedMoedapesoA.toFixed(6);
+       }
+       if (unitsMoedapesoA === "iene") {
+           calculatedMoedapesoA = inputMoeda * 2.49;
+           calculatedMoedapesoA = calculatedMoedapesoA.toFixed(2);
+       }
+       if (unitsMoedapesoA === "solesPeru") {
+           calculatedMoedapesoA = inputMoeda * 0.074;
+           calculatedMoedapesoA = calculatedMoedapesoA.toFixed(3);
+       }
+       if (unitsMoedapesoA === "pesoColombia") {
+           calculatedMoedapesoA = inputMoeda * 72.89;
+           calculatedMoedapesoA = calculatedMoedapesoA.toFixed(2);
+       }
+
+   	
+       conversionMoedapesoA.innerHTML = calculatedMoedapesoA;
+
+     };
+   
+     calculateMoedapesoA();
+</script>
+
+<!--FIM COROOOII!-->
+
+
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jqueryv3.2.1.slim.min.js"></script>
+  <script src="js/popperv1.12.9.min.js"></script>
+  <!-- Initialize Bootstrap functionality -->
+  
+ </body>
+ </html>
